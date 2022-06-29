@@ -5,7 +5,7 @@
   <mva:VisualBasic.Settings>
     <x:Null />
   </mva:VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>918,926</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>918,724</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>GetData_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="50">
@@ -84,7 +84,7 @@
       <AssemblyReference>System.Runtime.WindowsRuntime</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Sequence sap2010:Annotation.AnnotationText="Get task mail attachement&#xA;" DisplayName="Get Data" sap:VirtualizedContainerService.HintSize="476,861" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence sap2010:Annotation.AnnotationText="Get task mail attachement&#xA;" DisplayName="Get Data" sap:VirtualizedContainerService.HintSize="376,659" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="scg:List(snm:MailMessage)" Name="MailMessages" />
     </Sequence.Variables>
@@ -94,15 +94,15 @@
         <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <ui:GetOutlookMailMessages FilterByMessageIds="{x:Null}" TimeoutMS="{x:Null}" Account="rfasulu@outlook.com" DisplayName="Get Outlook Mail Messages" Filter="[Subject] = 'New Task'" GetAttachements="False" sap:VirtualizedContainerService.HintSize="434,22" sap2010:WorkflowViewState.IdRef="GetOutlookMailMessages_1" MailFolder="Inbox" MarkAsRead="False" Messages="[MailMessages]" OnlyUnreadMessages="True" OrderByDate="NewestFirst" Top="1" />
-    <ui:SaveMailAttachments Attachments="{x:Null}" FolderPath="{x:Null}" sap2010:Annotation.AnnotationText="Save mail attachement  in working directory&#xD;&#xA;" DisplayName="Save Attachments" ExcludeInlineAttachments="False" sap:VirtualizedContainerService.HintSize="434,131" sap2010:WorkflowViewState.IdRef="SaveMailAttachments_1" Message="[MailMessages(0)]" OverwriteExisting="False">
+    <ui:GetOutlookMailMessages FilterByMessageIds="{x:Null}" TimeoutMS="{x:Null}" Account="rfasulu@outlook.com" DisplayName="Get Outlook Mail Messages" Filter="[Subject] = 'New Task'" GetAttachements="False" sap:VirtualizedContainerService.HintSize="334,22" sap2010:WorkflowViewState.IdRef="GetOutlookMailMessages_1" MailFolder="Inbox" MarkAsRead="False" Messages="[MailMessages]" OnlyUnreadMessages="True" OrderByDate="NewestFirst" Top="1" />
+    <ui:SaveMailAttachments Attachments="{x:Null}" FolderPath="{x:Null}" sap2010:Annotation.AnnotationText="Save mail attachement  in working directory&#xA;" DisplayName="Save Attachments" ExcludeInlineAttachments="False" sap:VirtualizedContainerService.HintSize="334,131" sap2010:WorkflowViewState.IdRef="SaveMailAttachments_1" Message="[MailMessages(0)]" OverwriteExisting="False">
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
           <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
     </ui:SaveMailAttachments>
-    <ui:ReadRange AddHeaders="True" sap2010:Annotation.AnnotationText="Read attachment's &quot;Name&quot; column and save as  &quot;out&quot; argument  in out_dt_UserData&#xD;&#xA;" DataTable="[out_dt_UserData]" DisplayName="Read Range" sap:VirtualizedContainerService.HintSize="434,144" sap2010:WorkflowViewState.IdRef="ReadRange_1" SheetName="Sheet1" WorkbookPath="[MailMessages(0).Attachments(0).Name]">
+    <ui:ReadRange AddHeaders="True" sap2010:Annotation.AnnotationText="Read attachment's &quot;Name&quot; column and save as  &quot;out&quot; argument  in out_dt_UserData&#xA;" DataTable="[out_dt_UserData]" DisplayName="Read Range" sap:VirtualizedContainerService.HintSize="334,144" sap2010:WorkflowViewState.IdRef="ReadRange_1" SheetName="Sheet1" WorkbookPath="[MailMessages(0).Attachments(0).Name]">
       <ui:ReadRange.Range>
         <InArgument x:TypeArguments="x:String">
           <Literal x:TypeArguments="x:String" Value="" />
@@ -111,10 +111,12 @@
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
           <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          <x:Boolean x:Key="IsPinned">False</x:Boolean>
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
     </ui:ReadRange>
-    <ui:ForEachRow ColumnNames="{x:Null}" CurrentIndex="{x:Null}" sap2010:Annotation.AnnotationText="To ensure the data is fetched from worksheet &quot;Sheet1&quot;&#xD;&#xA;" DataTable="[out_dt_UserData]" DisplayName="For Each Row in Data Table" sap:VirtualizedContainerService.HintSize="434,310" sap2010:WorkflowViewState.IdRef="ForEachRow_1">
+    <ui:ForEachRow ColumnNames="{x:Null}" CurrentIndex="{x:Null}" sap2010:Annotation.AnnotationText="To ensure the data is fetched from worksheet &quot;Sheet1&quot;&#xA;" DataTable="[out_dt_UserData]" DisplayName="For Each Row in Data Table" sap:VirtualizedContainerService.HintSize="334,108" sap2010:WorkflowViewState.IdRef="ForEachRow_1">
       <ui:ForEachRow.Body>
         <ActivityAction x:TypeArguments="sd:DataRow">
           <ActivityAction.Argument>
@@ -126,13 +128,15 @@
                 <x:Boolean x:Key="IsExpanded">True</x:Boolean>
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
-            <WriteLine DisplayName="Write Line" sap:VirtualizedContainerService.HintSize="230,61" sap2010:WorkflowViewState.IdRef="WriteLine_1" Text="[CurrentRow(&quot;Name&quot;).ToString]" />
+            <WriteLine DisplayName="Write Line" sap:VirtualizedContainerService.HintSize="230,61" sap2010:WorkflowViewState.IdRef="WriteLine_1" Text="[CurrentRow(&quot;Name&quot;).ToString +&quot;, &quot; + CurrentRow(&quot;Role in Company&quot;).ToString]" />
           </Sequence>
         </ActivityAction>
       </ui:ForEachRow.Body>
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
           <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+          <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+          <x:Boolean x:Key="IsPinned">False</x:Boolean>
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
     </ui:ForEachRow>
