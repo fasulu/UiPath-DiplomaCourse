@@ -55,32 +55,16 @@
       <AssemblyReference>System.ValueTuple</AssemblyReference>
       <AssemblyReference>System.ComponentModel.Composition</AssemblyReference>
       <AssemblyReference>NPOI</AssemblyReference>
-      <AssemblyReference>System.Runtime.WindowsRuntime</AssemblyReference>
       <AssemblyReference>UiPath.System.Activities.Design</AssemblyReference>
+      <AssemblyReference>System.Runtime.WindowsRuntime</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="Sequence - Generic Values" sap:VirtualizedContainerService.HintSize="418,1822" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence DisplayName="Sequence - Practical 2 - Generic Values" sap:VirtualizedContainerService.HintSize="418,1822" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
-      <Variable x:TypeArguments="ui:GenericValue" Name="A">
-        <Variable.Default>
-          <mva:VisualBasicValue x:TypeArguments="ui:GenericValue" ExpressionText="&quot;123&quot;" />
-        </Variable.Default>
-      </Variable>
-      <Variable x:TypeArguments="ui:GenericValue" Name="B">
-        <Variable.Default>
-          <mva:VisualBasicValue x:TypeArguments="ui:GenericValue" ExpressionText="&quot;456&quot;" />
-        </Variable.Default>
-      </Variable>
-      <Variable x:TypeArguments="ui:GenericValue" Name="C">
-        <Variable.Default>
-          <mva:VisualBasicValue x:TypeArguments="ui:GenericValue" ExpressionText="&quot;123&quot;" />
-        </Variable.Default>
-      </Variable>
-      <Variable x:TypeArguments="ui:GenericValue" Name="D">
-        <Variable.Default>
-          <mva:VisualBasicValue x:TypeArguments="ui:GenericValue" ExpressionText="&quot;456&quot;" />
-        </Variable.Default>
-      </Variable>
+      <Variable x:TypeArguments="ui:GenericValue" Default="[&quot;123&quot;]" Name="A" />
+      <Variable x:TypeArguments="ui:GenericValue" Default="[&quot;456&quot;]" Name="B" />
+      <Variable x:TypeArguments="ui:GenericValue" Default="[&quot;123&quot;]" Name="C" />
+      <Variable x:TypeArguments="ui:GenericValue" Default="[&quot;456&quot;]" Name="D" />
     </Sequence.Variables>
     <sap:WorkflowViewStateService.ViewState>
       <scg:Dictionary x:TypeArguments="x:String, x:Object">
@@ -94,9 +78,9 @@
           <x:Boolean x:Key="IsPinned">False</x:Boolean>
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
-      <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="334,91" sap2010:WorkflowViewState.IdRef="LogMessage_5" Level="Info" Message="[&quot;Concatenation - A value is &quot;+A.ToString]" />
-      <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="334,91" sap2010:WorkflowViewState.IdRef="LogMessage_6" Level="Info" Message="[&quot;Concatenation - All Generic variables are &quot;+ A+&quot;, &quot;+B+&quot;, &quot;+C+&quot;, &quot;+D]" />
-      <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="334,91" sap2010:WorkflowViewState.IdRef="LogMessage_7" Level="Info" Message="[&quot;Concatenation - Jupiter from earth is around &quot;+D+&quot;millions miles&quot;]" />
+      <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="334,91" sap2010:WorkflowViewState.IdRef="LogMessage_5" Level="Info" Message="[&quot;Concatenation Values - A value is &quot;+A.ToString]" />
+      <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="334,91" sap2010:WorkflowViewState.IdRef="LogMessage_6" Level="Info" Message="[&quot;Concatenation Values - All Generic variables are &quot;+ A+&quot;, &quot;+B+&quot;, &quot;+C+&quot;, &quot;+D]" />
+      <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="334,91" sap2010:WorkflowViewState.IdRef="LogMessage_7" Level="Info" Message="[&quot;Concatenation Values - Jupiter from earth is around &quot;+D+&quot;millions miles&quot;]" />
     </Sequence>
     <Sequence DisplayName="Sequence - Arithmetic" sap:VirtualizedContainerService.HintSize="376,576" sap2010:WorkflowViewState.IdRef="Sequence_2">
       <sap:WorkflowViewStateService.ViewState>
