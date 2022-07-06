@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "L1oELhtGpxPUZqUvi4vbEL83c0jbzT3O9WWjQoh5Hacu08rTefCz2KbICsGgMRmBU636/mcaRzXGZtYWpOy3sA==",
+  "dgSpecHash": "Un+ep+3TquV+gHfZZIUx9irkXxCP9XwHKOPXAhPU9eVEfCsTb9rLSlcU3NhxSJXh4+W6IsVF3T0+0TJoRhBiFw==",
   "success": true,
-  "projectFilePath": "C:\\Users\\fasulu\\Documents\\UiPath\\UiPath-DiplomaCourse\\CalculateSum\\.local\\",
+  "projectFilePath": "C:\\Users\\fasulu\\Documents\\UiPath\\UiPath-DiplomaCourse\\Practice1_CalculatingSum\\.local\\",
   "expectedPackageFiles": [
     "C:\\Users\\fasulu\\.nuget\\packages\\closedxml\\0.87.1\\closedxml.0.87.1.nupkg.sha512",
     "C:\\Users\\fasulu\\.nuget\\packages\\csvhelper\\16.0.0\\csvhelper.16.0.0.nupkg.sha512",

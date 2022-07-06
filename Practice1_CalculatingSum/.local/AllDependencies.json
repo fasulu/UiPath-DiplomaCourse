@@ -8416,11 +8416,11 @@
   },
   "project": {
     "restore": {
-      "projectUniqueName": "CalculateSum",
-      "projectName": "CalculateSum",
-      "projectPath": "C:\\Users\\fasulu\\Documents\\UiPath\\UiPath-DiplomaCourse\\CalculateSum\\.local",
+      "projectUniqueName": "Practice1_CalculatingSum",
+      "projectName": "Practice1_CalculatingSum",
+      "projectPath": "C:\\Users\\fasulu\\Documents\\UiPath\\UiPath-DiplomaCourse\\Practice1_CalculatingSum\\.local",
       "packagesPath": "C:\\Users\\fasulu\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\fasulu\\Documents\\UiPath\\UiPath-DiplomaCourse\\CalculateSum\\.local",
+      "outputPath": "C:\\Users\\fasulu\\Documents\\UiPath\\UiPath-DiplomaCourse\\Practice1_CalculatingSum\\.local",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
       ]
