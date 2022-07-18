@@ -1,5 +1,5 @@
 {
-  "name": "BookStore",
+  "name": "String_BookStore",
   "description": "String Manipulation - Book store",
   "main": "Main.xaml",
   "dependencies": {

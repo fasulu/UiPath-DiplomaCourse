@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "wmozivyn0gDgkNdSBzMpA6MvnxeYTUL5ITfBdhyxL6yPTyoJFF4JyVMyAKLyzbm88jL2xzkY5lijvzdeQvH/EA==",
+  "dgSpecHash": "UvEyepfr/jsGS/SkrApFZPvX8FvRxVkmse4XXD1sbESxZFGMoXE9Em6R/qXT2Pc1P0ZPDV1qG/cVGtQTMb3YpA==",
   "success": true,
-  "projectFilePath": "C:\\Users\\fasulu\\Documents\\UiPath\\UiPath-DiplomaCourse\\BookStore\\.local\\",
+  "projectFilePath": "C:\\Users\\fasulu\\Documents\\UiPath\\UiPath-DiplomaCourse\\String_BookStore\\.local\\",
   "expectedPackageFiles": [
     "C:\\Users\\fasulu\\.nuget\\packages\\closedxml\\0.87.1\\closedxml.0.87.1.nupkg.sha512",
     "C:\\Users\\fasulu\\.nuget\\packages\\csvhelper\\16.0.0\\csvhelper.16.0.0.nupkg.sha512",

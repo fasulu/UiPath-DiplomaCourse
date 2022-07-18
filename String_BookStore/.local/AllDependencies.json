@@ -8416,11 +8416,11 @@
   },
   "project": {
     "restore": {
-      "projectUniqueName": "BookStore",
-      "projectName": "BookStore",
-      "projectPath": "C:\\Users\\fasulu\\Documents\\UiPath\\UiPath-DiplomaCourse\\BookStore\\.local",
+      "projectUniqueName": "String_BookStore",
+      "projectName": "String_BookStore",
+      "projectPath": "C:\\Users\\fasulu\\Documents\\UiPath\\UiPath-DiplomaCourse\\String_BookStore\\.local",
       "packagesPath": "C:\\Users\\fasulu\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\fasulu\\Documents\\UiPath\\UiPath-DiplomaCourse\\BookStore\\.local",
+      "outputPath": "C:\\Users\\fasulu\\Documents\\UiPath\\UiPath-DiplomaCourse\\String_BookStore\\.local",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
       ]
