@@ -1,0 +1,52 @@
+{
+  "name": "Practice_3_ACME_Libraries",
+  "description": "Updating a library and using the updated library.Starting from the library created in the libraries video demo: 1. Create two new components inside the library which will: Navigate to Invoices on ACME System 1, select Display All Invoices, extract all invoice data and save it to an .xlsx file called All Invoices.xlsx. Navigate to Invoices on ACME System 1, provide a Vendor Tax ID and and save the results to an .xlsx file called All invoices for + <VendorTaxID> .xlsx. The vendor tax ID must be given via user input. 2. Create a project that lets the user choose between downloading all work items, downloading all invoices, or downloading only the invoices that belong to a certain tax ID inputted by the user. Use the library components for each of these options.",
+  "main": "Login.xaml",
+  "dependencies": {
+    "UiPath.Credentials.Activities": "2.0.0",
+    "UiPath.System.Activities": "20.10.4",
+    "UiPath.UIAutomation.Activities": "20.10.9"
+  },
+  "webServices": [],
+  "entitiesStores": [],
+  "schemaVersion": "4.0",
+  "studioVersion": "19.7.0.0",
+  "projectVersion": "1.0.11",
+  "runtimeOptions": {
+    "autoDispose": false,
+    "netFrameworkLazyLoading": false,
+    "isPausable": true,
+    "isAttended": false,
+    "requiresUserInteraction": true,
+    "supportsPersistence": false,
+    "excludedLoggedData": [
+      "Private:*",
+      "*password*"
+    ],
+    "executionType": "Workflow",
+    "readyForPiP": false,
+    "startsInPiP": false,
+    "mustRestoreAllDependencies": false
+  },
+  "designOptions": {
+    "projectProfile": "Developement",
+    "outputType": "Library",
+    "libraryOptions": {
+      "includeOriginalXaml": false,
+      "privateWorkflows": [
+        "Navigate to home page.xaml",
+        "WorkItems/Navigate to work items.xaml"
+      ]
+    },
+    "processOptions": {
+      "ignoredFiles": []
+    },
+    "fileInfoCollection": [],
+    "modernBehavior": false
+  },
+  "expressionLanguage": "VisualBasic",
+  "isTemplate": false,
+  "templateProjectData": {},
+  "publishData": {},
+  "targetFramework": "Legacy"
+}
