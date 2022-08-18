@@ -1,4 +1,4 @@
-<Activity mc:Ignorable="sap sap2010" x:Class="Main" mva:VisualBasic.Settings="{x:Null}" sap:VirtualizedContainerService.HintSize="634,4346" sap2010:WorkflowViewState.IdRef="Main_1" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities" xmlns:s="clr-namespace:System;assembly=mscorlib" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+<Activity mc:Ignorable="sap sap2010" x:Class="Main" mva:VisualBasic.Settings="{x:Null}" sap:VirtualizedContainerService.HintSize="634,4100" sap2010:WorkflowViewState.IdRef="Main_1" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities" xmlns:s="clr-namespace:System;assembly=mscorlib" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="26">
       <x:String>System.Activities</x:String>
@@ -60,7 +60,7 @@
       <AssemblyReference>UiPath.System.Activities.Design</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
-  <Sequence sap2010:Annotation.AnnotationText="&#xA;Debug your colleague's workflow&#xA;&#xA;Your colleague was tasked with creating a Proof of Concept that can demonstrate UiPath's adaptability to changing interfaces. The robot needs to extract the first name, last name, phone number, and company name from www.fakenamegenerator.com and insert them in the correct fields on rpachallenge.com. &#xA;&#xA;The robot is not behaving correctly and your colleague needs your help to make it work. Can you download the project and debug this workflow using the methods discussed in the first chapter?&#xA;" DisplayName="Scrape &amp; Win" sap:VirtualizedContainerService.HintSize="644,4281" sap2010:WorkflowViewState.IdRef="Sequence_8">
+  <Sequence sap2010:Annotation.AnnotationText="&#xA;Debug your colleague's workflow&#xA;&#xA;Your colleague was tasked with creating a Proof of Concept that can demonstrate UiPath's adaptability to changing interfaces. The robot needs to extract the first name, last name, phone number, and company name from www.fakenamegenerator.com and insert them in the correct fields on rpachallenge.com. &#xA;&#xA;The robot is not behaving correctly and your colleague needs your help to make it work. Can you download the project and debug this workflow using the methods discussed in the first chapter?&#xA;" DisplayName="Scrape &amp; Win" sap:VirtualizedContainerService.HintSize="644,4035" sap2010:WorkflowViewState.IdRef="Sequence_8">
     <Sequence.Variables>
       <Variable x:TypeArguments="x:String" Name="FullName" />
       <Variable x:TypeArguments="x:String" Name="PhoneNumber" />
@@ -80,19 +80,19 @@
         <OutArgument x:TypeArguments="x:Int32">[UserIterationsRequest]</OutArgument>
       </ui:InputDialog.Result>
     </ui:InputDialog>
-    <Sequence DisplayName="Get input from Fake Name Generator" sap:VirtualizedContainerService.HintSize="602,3749" sap2010:WorkflowViewState.IdRef="Sequence_15">
+    <Sequence DisplayName="Get input from Fake Name Generator" sap:VirtualizedContainerService.HintSize="602,3503" sap2010:WorkflowViewState.IdRef="Sequence_15">
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
           <x:Boolean x:Key="IsExpanded">True</x:Boolean>
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
-      <ui:OpenBrowser CommunicationMethod="{x:Null}" UiBrowser="{x:Null}" BrowserType="Chrome" DisplayName="Open Browser" Hidden="False" sap:VirtualizedContainerService.HintSize="560,3657" sap2010:WorkflowViewState.IdRef="OpenBrowser_1" NewSession="True" Private="False" Url="https://www.fakenamegenerator.com/gen-random-us-us.php">
+      <ui:OpenBrowser CommunicationMethod="{x:Null}" UiBrowser="{x:Null}" BrowserType="Chrome" DisplayName="Open Browser" Hidden="False" sap:VirtualizedContainerService.HintSize="560,3411" sap2010:WorkflowViewState.IdRef="OpenBrowser_1" NewSession="True" Private="False" Url="https://www.fakenamegenerator.com/gen-random-us-us.php">
         <ui:OpenBrowser.Body>
           <ActivityAction x:TypeArguments="x:Object">
             <ActivityAction.Argument>
               <DelegateInArgument x:TypeArguments="x:Object" Name="ContextTarget" />
             </ActivityAction.Argument>
-            <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="526,3556" sap2010:WorkflowViewState.IdRef="Sequence_1">
+            <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="526,3310" sap2010:WorkflowViewState.IdRef="Sequence_1">
               <sap:WorkflowViewStateService.ViewState>
                 <scg:Dictionary x:TypeArguments="x:String, x:Object">
                   <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -118,7 +118,7 @@
                   </sap:WorkflowViewStateService.ViewState>
                   <ui:GetFullText DisplayName="Get Full Text 'H3'" sap:VirtualizedContainerService.HintSize="384,106" sap2010:WorkflowViewState.IdRef="GetFullText_4" IgnoreHidden="False">
                     <ui:GetFullText.Target>
-                      <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="746410f3-7314-45ee-a222-f6caf3eff5b1" InformativeScreenshot="f08db34a40ff5cb79e64a579a6cbb14d" Selector="&lt;webctrl tag='DIV' class='address' /&gt;&lt;webctrl tag='H3' /&gt;" WaitForReady="COMPLETE">
+                      <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="746410f3-7314-45ee-a222-f6caf3eff5b1" InformativeScreenshot="f08db34a40ff5cb79e64a579a6cbb14d" Selector="&lt;webctrl tag='DIV' id='body' /&gt;&lt;webctrl tag='DIV' class='content' /&gt;&lt;webctrl tag='DIV' id='details' /&gt;&lt;webctrl tag='DIV' class='content' /&gt;&lt;webctrl tag='DIV' class='info' /&gt;&lt;webctrl tag='DIV' class='content' /&gt;&lt;webctrl tag='DIV' class='address' /&gt;&lt;webctrl tag='H3' /&gt;" WaitForReady="COMPLETE">
                         <ui:Target.TimeoutMS>
                           <InArgument x:TypeArguments="x:Int32" />
                         </ui:Target.TimeoutMS>
