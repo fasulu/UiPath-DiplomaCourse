@@ -1,6 +1,6 @@
 {
-  "name": "FineTuningSelectorsDemo",
-  "description": "Blank Process",
+  "name": "FineTuningSelectorsDynamic",
+  "description": "Description: a sequence for input data to UiDemo window Prerequisites: AnyTeller application should be started before running the workflow",
   "main": "Main.xaml",
   "dependencies": {
     "UiPath.Excel.Activities": "[2.9.5]",
