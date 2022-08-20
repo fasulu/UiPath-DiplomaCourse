@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "i4E03dFl8dzOmn2rLsByuHybCA6iZeblRP+6s6fP5Qau7Z2vE/5gMK+9pSbVU+WHrOKEuwbY89i5S5XwOShgWw==",
+  "dgSpecHash": "t76aoEZ62/56Ex8yq3mJaJXrxmH0Nb+JeyiTZ7PWvKI3gtddOSNnYxoyVgN7oJQf9YtUVHKnwFeupN96nABovg==",
   "success": true,
   "projectFilePath": "C:\\Users\\fasulu\\Documents\\UiPath\\UiPath-DiplomaCourse\\Practice_1_Exercise_Debugging_and_Exception_Handling(Project)\\.local\\",
   "expectedPackageFiles": [
@@ -11,6 +11,7 @@
     "C:\\Users\\fasulu\\.nuget\\packages\\csvhelper\\2.13.5\\csvhelper.2.13.5.nupkg.sha512",
     "C:\\Users\\fasulu\\.nuget\\packages\\extended.wpf.toolkit\\3.8.1\\extended.wpf.toolkit.3.8.1.nupkg.sha512",
     "C:\\Users\\fasulu\\.nuget\\packages\\humanizer.core\\2.4.2\\humanizer.core.2.4.2.nupkg.sha512",
+    "C:\\Users\\fasulu\\.nuget\\packages\\microsoft.activities.extensions\\2.0.6.9\\microsoft.activities.extensions.2.0.6.9.nupkg.sha512",
     "C:\\Users\\fasulu\\.nuget\\packages\\microsoft.aspnet.signalr.client\\2.4.0\\microsoft.aspnet.signalr.client.2.4.0.nupkg.sha512",
     "C:\\Users\\fasulu\\.nuget\\packages\\microsoft.aspnetcore.connections.abstractions\\3.1.6\\microsoft.aspnetcore.connections.abstractions.3.1.6.nupkg.sha512",
     "C:\\Users\\fasulu\\.nuget\\packages\\microsoft.aspnetcore.http.connections.client\\3.1.6\\microsoft.aspnetcore.http.connections.client.3.1.6.nupkg.sha512",

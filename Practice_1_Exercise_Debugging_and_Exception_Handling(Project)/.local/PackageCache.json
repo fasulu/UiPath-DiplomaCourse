@@ -116,6 +116,17 @@
         "C:\\Users\\fasulu\\.nuget\\packages\\uipath.vision\\2.2.0\\lib/net461/UiPath.Vision.dll"
       ],
       "Path": "C:\\Users\\fasulu\\.nuget\\packages\\uipath.uiautomation.activities\\20.10.9"
+    },
+    {
+      "Package": {
+        "Id": "Microsoft.Activities.Extensions",
+        "Version": "2.0.6.9"
+      },
+      "Assemblies": [
+        "C:\\Users\\fasulu\\.nuget\\packages\\microsoft.activities.extensions\\2.0.6.9\\lib/Net45/Microsoft.Activities.Extensions.Design.dll",
+        "C:\\Users\\fasulu\\.nuget\\packages\\microsoft.activities.extensions\\2.0.6.9\\lib/Net45/Microsoft.Activities.Extensions.dll"
+      ],
+      "Path": "C:\\Users\\fasulu\\.nuget\\packages\\microsoft.activities.extensions\\2.0.6.9"
     }
   ],
   "Conflicts": [],
@@ -167,6 +178,11 @@
     "Humanizer.Core": {
       "Id": "Humanizer.Core",
       "Version": "2.4.2",
+      "Dependencies": []
+    },
+    "Microsoft.Activities.Extensions": {
+      "Id": "Microsoft.Activities.Extensions",
+      "Version": "2.0.6.9",
       "Dependencies": []
     },
     "Microsoft.AspNet.SignalR.Client": {
@@ -867,6 +883,17 @@
         "C:\\Users\\fasulu\\.nuget\\packages\\humanizer.core\\2.4.2\\lib\\netstandard2.0\\Humanizer.dll"
       ],
       "Path": "C:\\Users\\fasulu\\.nuget\\packages\\humanizer.core\\2.4.2"
+    },
+    {
+      "Package": {
+        "Id": "Microsoft.Activities.Extensions",
+        "Version": "2.0.6.9"
+      },
+      "Assemblies": [
+        "C:\\Users\\fasulu\\.nuget\\packages\\microsoft.activities.extensions\\2.0.6.9\\lib\\Net45\\Microsoft.Activities.Extensions.Design.dll",
+        "C:\\Users\\fasulu\\.nuget\\packages\\microsoft.activities.extensions\\2.0.6.9\\lib\\Net45\\Microsoft.Activities.Extensions.dll"
+      ],
+      "Path": "C:\\Users\\fasulu\\.nuget\\packages\\microsoft.activities.extensions\\2.0.6.9"
     },
     {
       "Package": {

@@ -1,6 +1,6 @@
-<Activity mc:Ignorable="sap sap2010" x:Class="Main" mva:VisualBasic.Settings="{x:Null}" sap:VirtualizedContainerService.HintSize="634,4100" sap2010:WorkflowViewState.IdRef="Main_1" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities" xmlns:s="clr-namespace:System;assembly=mscorlib" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+<Activity mc:Ignorable="sap sap2010" x:Class="Main" mva:VisualBasic.Settings="{x:Null}" sap:VirtualizedContainerService.HintSize="865,1373" sap2010:WorkflowViewState.IdRef="Main_1" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities" xmlns:s="clr-namespace:System;assembly=mscorlib" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:sd="clr-namespace:System.Data;assembly=System.Data" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:uix="http://schemas.uipath.com/workflow/activities/uix" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
   <TextExpression.NamespacesForImplementation>
-    <scg:List x:TypeArguments="x:String" Capacity="26">
+    <scg:List x:TypeArguments="x:String" Capacity="34">
       <x:String>System.Activities</x:String>
       <x:String>System.Activities.Statements</x:String>
       <x:String>System.Activities.Expressions</x:String>
@@ -27,10 +27,18 @@
       <x:String>System.Activities.DynamicUpdate</x:String>
       <x:String>System.Reflection</x:String>
       <x:String>System.Runtime.InteropServices</x:String>
+      <x:String>UiPath.UIAutomationNext.Activities</x:String>
+      <x:String>UiPath.Platform.ObjectLibrary</x:String>
+      <x:String>UiPath.Shared.Activities</x:String>
+      <x:String>System.ComponentModel</x:String>
+      <x:String>UiPath.UIAutomationNext.Contracts</x:String>
+      <x:String>System.Security</x:String>
+      <x:String>System.Runtime.Serialization</x:String>
+      <x:String>System.Xml.Serialization</x:String>
     </scg:List>
   </TextExpression.NamespacesForImplementation>
   <TextExpression.ReferencesForImplementation>
-    <scg:List x:TypeArguments="AssemblyReference" Capacity="28">
+    <scg:List x:TypeArguments="AssemblyReference" Capacity="31">
       <AssemblyReference>System.Activities</AssemblyReference>
       <AssemblyReference>Microsoft.VisualBasic</AssemblyReference>
       <AssemblyReference>mscorlib</AssemblyReference>
@@ -58,9 +66,13 @@
       <AssemblyReference>UiPath.UIAutomationCore</AssemblyReference>
       <AssemblyReference>System.ComponentModel.Composition</AssemblyReference>
       <AssemblyReference>UiPath.System.Activities.Design</AssemblyReference>
+      <AssemblyReference>UiPath.UIAutomationNext.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Platform</AssemblyReference>
+      <AssemblyReference>UiPath.OCR.Activities</AssemblyReference>
+      <AssemblyReference>System.Runtime.Serialization</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
-  <Sequence sap2010:Annotation.AnnotationText="&#xA;Debug your colleague's workflow&#xA;&#xA;Your colleague was tasked with creating a Proof of Concept that can demonstrate UiPath's adaptability to changing interfaces. The robot needs to extract the first name, last name, phone number, and company name from www.fakenamegenerator.com and insert them in the correct fields on rpachallenge.com. &#xA;&#xA;The robot is not behaving correctly and your colleague needs your help to make it work. Can you download the project and debug this workflow using the methods discussed in the first chapter?&#xA;" DisplayName="Scrape &amp; Win" sap:VirtualizedContainerService.HintSize="644,4035" sap2010:WorkflowViewState.IdRef="Sequence_8">
+  <Sequence sap2010:Annotation.AnnotationText="&#xA;Debug your colleague's workflow&#xA;&#xA;Your colleague was tasked with creating a Proof of Concept that can demonstrate UiPath's adaptability to changing interfaces. The robot needs to extract the first name, last name, phone number, and company name from www.fakenamegenerator.com and insert them in the correct fields on rpachallenge.com. &#xA;&#xA;The robot is not behaving correctly and your colleague needs your help to make it work. Can you download the project and debug this workflow using the methods discussed in the first chapter?&#xA;" DisplayName="Scrape &amp; Win" sap:VirtualizedContainerService.HintSize="478,1699" sap2010:WorkflowViewState.IdRef="Sequence_8">
     <Sequence.Variables>
       <Variable x:TypeArguments="x:String" Name="FullName" />
       <Variable x:TypeArguments="x:String" Name="PhoneNumber" />
@@ -68,6 +80,9 @@
       <Variable x:TypeArguments="s:String[]" Name="NameArray" />
       <Variable x:TypeArguments="x:Int32" Name="UserIterationsRequest" />
       <Variable x:TypeArguments="x:Int32" Name="IterationCounter" />
+      <Variable x:TypeArguments="x:String" Name="FName" />
+      <Variable x:TypeArguments="x:String" Name="LName" />
+      <Variable x:TypeArguments="sd:DataTable" Name="dtNameList" />
     </Sequence.Variables>
     <sap:WorkflowViewStateService.ViewState>
       <scg:Dictionary x:TypeArguments="x:String, x:Object">
@@ -75,304 +90,564 @@
         <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <ui:InputDialog Options="{x:Null}" OptionsString="{x:Null}" DisplayName="Input Dialog" sap:VirtualizedContainerService.HintSize="602,238" sap2010:WorkflowViewState.IdRef="InputDialog_1" IsPassword="False" Label="How many times would you like to enter data in the form?" Title="Number of iterations">
+    <ui:InputDialog Options="{x:Null}" OptionsString="{x:Null}" DisplayName="Input Dialog" sap:VirtualizedContainerService.HintSize="436,238" sap2010:WorkflowViewState.IdRef="InputDialog_1" IsPassword="False" Label="How many times would you like to enter data in the form?" Title="Number of iterations">
       <ui:InputDialog.Result>
         <OutArgument x:TypeArguments="x:Int32">[UserIterationsRequest]</OutArgument>
       </ui:InputDialog.Result>
     </ui:InputDialog>
-    <Sequence DisplayName="Get input from Fake Name Generator" sap:VirtualizedContainerService.HintSize="602,3503" sap2010:WorkflowViewState.IdRef="Sequence_15">
+    <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="436,91" sap2010:WorkflowViewState.IdRef="LogMessage_5" Level="Info" Message="[&quot;Start Time:- &quot; + date.Now.ToString]" />
+    <ui:BuildDataTable DataTable="[dtNameList]" DisplayName="Build Data Table" sap:VirtualizedContainerService.HintSize="436,59" sap2010:WorkflowViewState.IdRef="BuildDataTable_1" TableInfo="&lt;NewDataSet&gt;&#xD;&#xA;  &lt;xs:schema id=&quot;NewDataSet&quot; xmlns=&quot;&quot; xmlns:xs=&quot;http://www.w3.org/2001/XMLSchema&quot; xmlns:msdata=&quot;urn:schemas-microsoft-com:xml-msdata&quot;&gt;&#xD;&#xA;    &lt;xs:element name=&quot;NewDataSet&quot; msdata:IsDataSet=&quot;true&quot; msdata:MainDataTable=&quot;TableName&quot; msdata:UseCurrentLocale=&quot;true&quot;&gt;&#xD;&#xA;      &lt;xs:complexType&gt;&#xD;&#xA;        &lt;xs:choice minOccurs=&quot;0&quot; maxOccurs=&quot;unbounded&quot;&gt;&#xD;&#xA;          &lt;xs:element name=&quot;TableName&quot;&gt;&#xD;&#xA;            &lt;xs:complexType&gt;&#xD;&#xA;              &lt;xs:sequence&gt;&#xD;&#xA;                &lt;xs:element name=&quot;FName&quot; msdata:Caption=&quot;&quot; minOccurs=&quot;0&quot;&gt;&#xD;&#xA;                  &lt;xs:simpleType&gt;&#xD;&#xA;                    &lt;xs:restriction base=&quot;xs:string&quot;&gt;&#xD;&#xA;                      &lt;xs:maxLength value=&quot;100&quot; /&gt;&#xD;&#xA;                    &lt;/xs:restriction&gt;&#xD;&#xA;                  &lt;/xs:simpleType&gt;&#xD;&#xA;                &lt;/xs:element&gt;&#xD;&#xA;                &lt;xs:element name=&quot;LName&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xD;&#xA;                &lt;xs:element name=&quot;PhoneNumber&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xD;&#xA;                &lt;xs:element name=&quot;CompanyName&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xD;&#xA;              &lt;/xs:sequence&gt;&#xD;&#xA;            &lt;/xs:complexType&gt;&#xD;&#xA;          &lt;/xs:element&gt;&#xD;&#xA;        &lt;/xs:choice&gt;&#xD;&#xA;      &lt;/xs:complexType&gt;&#xD;&#xA;    &lt;/xs:element&gt;&#xD;&#xA;  &lt;/xs:schema&gt;&#xD;&#xA;&lt;/NewDataSet&gt;" />
+    <Sequence sap2010:Annotation.AnnotationText="&#xD;&#xA;Use data table to store fake name details and retreived data table to populate in rpachallenge website&#xD;&#xA;" DisplayName="Sequence - Get input from Fake Name Generator" sap:VirtualizedContainerService.HintSize="436,336" sap2010:WorkflowViewState.IdRef="Sequence_28">
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
           <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+          <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
-      <ui:OpenBrowser CommunicationMethod="{x:Null}" UiBrowser="{x:Null}" BrowserType="Chrome" DisplayName="Open Browser" Hidden="False" sap:VirtualizedContainerService.HintSize="560,3411" sap2010:WorkflowViewState.IdRef="OpenBrowser_1" NewSession="True" Private="False" Url="https://www.fakenamegenerator.com/gen-random-us-us.php">
-        <ui:OpenBrowser.Body>
+      <uix:NApplicationCard AttachMode="ByInstance" DisplayName="Use Browser Chrome: Generate a Random Name - Fake Name Generator" sap:VirtualizedContainerService.HintSize="200,51" sap2010:WorkflowViewState.IdRef="NApplicationCard_1" InteractionMode="Simulate" Version="V1">
+        <uix:NApplicationCard.Body>
           <ActivityAction x:TypeArguments="x:Object">
             <ActivityAction.Argument>
-              <DelegateInArgument x:TypeArguments="x:Object" Name="ContextTarget" />
+              <DelegateInArgument x:TypeArguments="x:Object" Name="WSSessionData" />
             </ActivityAction.Argument>
-            <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="526,3310" sap2010:WorkflowViewState.IdRef="Sequence_1">
+            <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="454,1697" sap2010:WorkflowViewState.IdRef="Sequence_29">
               <sap:WorkflowViewStateService.ViewState>
                 <scg:Dictionary x:TypeArguments="x:String, x:Object">
                   <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                  <x:Boolean x:Key="IsPinned">False</x:Boolean>
                 </scg:Dictionary>
               </sap:WorkflowViewStateService.ViewState>
-              <While DisplayName="While" sap:VirtualizedContainerService.HintSize="484,3219" sap2010:WorkflowViewState.IdRef="While_2">
+              <ui:InterruptibleWhile Condition="[IterationCounter &lt; UserIterationsRequest]" DisplayName="While" sap:VirtualizedContainerService.HintSize="412,1603" sap2010:WorkflowViewState.IdRef="InterruptibleWhile_1">
+                <ui:InterruptibleWhile.Body>
+                  <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="376,1438" sap2010:WorkflowViewState.IdRef="Sequence_30">
+                    <sap:WorkflowViewStateService.ViewState>
+                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                      </scg:Dictionary>
+                    </sap:WorkflowViewStateService.ViewState>
+                    <uix:NGetText DelayAfter="3" DelayBefore="3" DisplayName="Get Text 'Gender'" sap:VirtualizedContainerService.HintSize="334,166" sap2010:WorkflowViewState.IdRef="NGetText_1">
+                      <uix:NGetText.Target>
+                        <uix:TargetAnchorable BrowserURL="https://www.fakenamegenerator.com/gen-random-us-us.php" DesignTimeRectangle="511, 534, 540, 19" FriendlyName="'Martha R. Elrod'" FullSelectorArgument="&lt;webctrl tag='DIV' class='address' /&gt;&#xA;&lt;webctrl tag='H3' /&gt;" FuzzySelectorArgument="&lt;webctrl type='' tag='H3' /&gt;" ImageBase64="" InformativeScreenshot="1d22d6875f80ba9b8871fea40361283a.png" ScopeSelectorArgument="&lt;html app='chrome.exe' title='Generate a Random Name - Fake Name Generator' /&gt;" SearchSteps="FuzzySelector" Text="Martha R. Elrod" TextMethod="AttributeText" TextSelector="&lt;webctrl type='' tag='H3' /&gt;">
+                          <uix:TargetAnchorable.Anchors>
+                            <scg:List x:TypeArguments="uix:ITarget" Capacity="1">
+                              <uix:Target DesignTimeRectangle="355, 369, 51, 17" ElementType="Text" FriendlyName="'Gender'" FullSelectorArgument="&lt;webctrl aaname='Gender' tag='LABEL' /&gt;" FuzzySelectorArgument="&lt;webctrl aaname='Gender' tag='LABEL' type='' check:text='Gender' /&gt;" ImageBase64="iVBORw0KGgoAAAANSUhEUgAAADcAAAAVCAYAAADiv3Z7AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAEvSURBVFhH7ZTrDcMgDIS7a8ZgDGZhDcbIGi4QHgd2AlUbqUSc5B91HJ+/GvKiB2vBzaoFN6v+Cs7qjbbNhTK0x9w3EuB2MiqaYGgbn9+ne+GszjDKQPuYr3I36EY4SzqCiVvaDWkBuISi/NjVqpQzWAc1XrmuCYS78oGZtU0nTrvsoQKXmzQDSEq16U9AGP8uDh1r8lbYO36wI8U21/PBheQQ4Haj2ENZ5U4mT8yFo8uG4P2lI1jnBnwArtQUXcCVRinqweUYg4PeMFUFN+IzCpePADuWpUELJzUM+jHcqc8wHBSiIYNjvwV14QDkDG7EB2o6cE7wZSoNBZOTLfvhgskAHO8B20z3sOfzEVwQv2tHpLsYBccGYxiuyh21qoXzuvL5HO45WnCzasHNKaI3ShNX+VQtyksAAAAASUVORK5CYII=" SearchSteps="FuzzySelector, Image" Text="Gender" TextMethod="AttributeText" TextSelector="&lt;webctrl tag='LABEL' type='' /&gt;" />
+                            </scg:List>
+                          </uix:TargetAnchorable.Anchors>
+                        </uix:TargetAnchorable>
+                      </uix:NGetText.Target>
+                      <uix:NGetText.Text>
+                        <OutArgument x:TypeArguments="x:String">[FullName]</OutArgument>
+                      </uix:NGetText.Text>
+                    </uix:NGetText>
+                    <Assign sap:VirtualizedContainerService.HintSize="334,60" sap2010:WorkflowViewState.IdRef="Assign_8">
+                      <Assign.To>
+                        <OutArgument x:TypeArguments="s:String[]">[NameArray]</OutArgument>
+                      </Assign.To>
+                      <Assign.Value>
+                        <InArgument x:TypeArguments="s:String[]">[FullName.Split(" "c)]</InArgument>
+                      </Assign.Value>
+                    </Assign>
+                    <uix:NGetText DisplayName="Get Text 'Phone'" sap:VirtualizedContainerService.HintSize="334,166" sap2010:WorkflowViewState.IdRef="NGetText_2">
+                      <uix:NGetText.Target>
+                        <uix:TargetAnchorable BrowserURL="https://www.fakenamegenerator.com/gen-random-us-us.php" DesignTimeRectangle="696, 377, 355, 20" FriendlyName="'731-687-6350'" FullSelectorArgument="&lt;webctrl idx='2' isleaf='1' tag='DD' /&gt;" FuzzySelectorArgument="&lt;webctrl type='' isleaf='1' tag='DD' /&gt;" ImageBase64="" InformativeScreenshot="fe64996f876feeb44e34825e157ca805.png" ScopeSelectorArgument="&lt;html app='chrome.exe' title='Generate a Random Name - Fake Name Generator' /&gt;" SearchSteps="FuzzySelector" Text="731-687-6350" TextMethod="AttributeText" TextSelector="&lt;webctrl type='' tag='DD' /&gt;">
+                          <uix:TargetAnchorable.Anchors>
+                            <scg:List x:TypeArguments="uix:ITarget" Capacity="2">
+                              <uix:Target DesignTimeRectangle="511, 377, 170, 20" FriendlyName="'Phone'" FullSelectorArgument="&lt;webctrl idx='4' tag='DT' /&gt;" FuzzySelectorArgument="&lt;webctrl type='' tag='DT' aaname='Phone' check:text='Phone' /&gt;" ImageBase64="iVBORw0KGgoAAAANSUhEUgAAAK4AAAAYCAYAAABjn8aGAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAFFSURBVHhe7dfrkYMgFEDhVGsXlEEtlGEZlkEEeVwjPrKzMbnD+WaYWQm6/jgS8/CAQoQLlQgXKhEuVCJcqES4UOntcEc7+GGYhx3TDHA/Ee7obQiyMWSjhItf0A43RznaEq9xU5oiXHzfcbh+8s6kOePmIxmuq5+tzllMztTPwkjnR5PzJs4b71x9OOJxWRRsvwXyA4S+/T3cHJmMMDW12ZXzzp3jLefUNdudPN+Pnf8K6r0QL66HexpYCkpEWZaINXGuEXvdoZdQy3G9SJ2Tuze6dPEd92A3fQ23cc6c3Hq3PA1XPDCtQbjda4e7GvmrenF7uGLHBbKTV4Wtu14Vyv9hd0XD/4cbZl7X7P442w+3dd0oXOvg/tCHj4Qb1BDTkDvnpXCDnXddwu2eCBfQg3ChEuFCJcKFSoQLlQgXKhEuFPL+CeqKkfNHxNvfAAAAAElFTkSuQmCC" SearchSteps="FuzzySelector, Image" Text="Phone" TextMethod="AttributeText" TextSelector="&lt;webctrl type='' tag='DT' /&gt;" />
+                              <uix:Target DesignTimeRectangle="511, 402, 170, 20" FriendlyName="'Country code'" FullSelectorArgument="&lt;webctrl idx='5' tag='DT' /&gt;" FuzzySelectorArgument="&lt;webctrl type='' tag='DT' aaname='Country code' check:text='Country code' /&gt;" ImageBase64="iVBORw0KGgoAAAANSUhEUgAAAK4AAAAYCAYAAABjn8aGAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAIZSURBVHhe7ZfbccMgEEVTrbughfzxmTr0lxZUhsogerC7PBYEsWMb5Z6ZnbExj0UcQP5wAAwIxAVDAnHBkEBcMCQQFwwJxAVDAnEfyDIZd7vd1rBu9mXgb1DEnZ3dH34c9ukrIXmYafFl7w3EfR6xuLNVRF3cZF6xGBAXlAnErYsyW1kMWSAfZlr19iyTM76c5ecNYdzRtYxlJ6kvbWizJLGNw/1vffl+zJf79HXC3Gfr21WuC67DQTmezHNH5hFHKG5eZ5SN+M6IuJlcOpkM1I4WtVNcaseSsBxSJ1rooH+Otc035aW0172VzRHLfuR4Ok8lv/zEpTr0XR8T9MPiNl1zmpTBAu5lvSduQx1d3GSDpe35e2E+td8b5qk9r7SMv0snUsYbAPyGPnEzuTaSU+RV4ib1z14T+HdNoIZ5au3jZ1h43aGAuHfR96rw1uIG4hjrrM+p4K0qHvNocUtJgF/T9+es4Qp9pbjh2Ee03B5KnYZ5ald+emtVNwe4i0DcFV7McMFoAZLFoArUhhcnOYFXuE2XuMpYGzVxw1MubZeR57nR/OdMkVvmSZuhsPm2vqq5gTNicXfkYUvEksjJ4iM9UZKTz66n9fG5T9wsl22cqrhxbi1uiGwU0u/pPDnnI4yJT9yDZDNRQNy7UMQdGxYxlQxciouJW7iaweW4lrjq6wa4Ipd7VQD/A4gLhgTigiGBuGBAnPsBwRA+nZUDbWUAAAAASUVORK5CYII=" SearchSteps="FuzzySelector, Image" Text="Country code" TextMethod="AttributeText" TextSelector="&lt;webctrl type='' tag='DT' /&gt;" />
+                            </scg:List>
+                          </uix:TargetAnchorable.Anchors>
+                        </uix:TargetAnchorable>
+                      </uix:NGetText.Target>
+                      <uix:NGetText.Text>
+                        <OutArgument x:TypeArguments="x:String">[PhoneNumber]</OutArgument>
+                      </uix:NGetText.Text>
+                    </uix:NGetText>
+                    <uix:NGetText DisplayName="Get Text 'Company'" sap:VirtualizedContainerService.HintSize="334,166" sap2010:WorkflowViewState.IdRef="NGetText_3">
+                      <uix:NGetText.Target>
+                        <uix:TargetAnchorable BrowserURL="https://www.fakenamegenerator.com/gen-random-us-us.php" DesignTimeRectangle="696, 347, 355, 20" FriendlyName="'Listen Up'" FullSelectorArgument="&lt;webctrl idx='14' isleaf='1' tag='DD' /&gt;" FuzzySelectorArgument="&lt;webctrl type='' isleaf='1' tag='DD' /&gt;" ImageBase64="" InformativeScreenshot="908e54cf750a878c23c6470b7bcc3f4f.png" ScopeSelectorArgument="&lt;html app='chrome.exe' title='Generate a Random Name - Fake Name Generator' /&gt;" SearchSteps="FuzzySelector" Text="Listen Up" TextMethod="AttributeText" TextSelector="&lt;webctrl type='' tag='DD' /&gt;">
+                          <uix:TargetAnchorable.Anchors>
+                            <scg:List x:TypeArguments="uix:ITarget" Capacity="2">
+                              <uix:Target DesignTimeRectangle="511, 347, 170, 20" FriendlyName="'Company'" FullSelectorArgument="&lt;webctrl idx='17' tag='DT' /&gt;" FuzzySelectorArgument="&lt;webctrl type='' tag='DT' aaname='Company' check:text='Company' /&gt;" ImageBase64="iVBORw0KGgoAAAANSUhEUgAAAK4AAAAYCAYAAABjn8aGAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAG0SURBVHhe7ZfrrcMgDEbvtNmCMZiFMTJGxqA0wQ/Aikrbq8TqdyT/KDWPKAdw/jIADoG4wCUQF7gE4gKXQFzgEogLXAJxgUsMcdcclyUvXcS1/g3ADWjFXaMh6pZTeLbFojQA90CJKydtSFttE9Yo4m4psOB7hFT0rmwph9oeSx/JO/qvkX6XUMc4t5c++sTXa2n6UqgxeF1lPUnn0vp4Y4Ysw8pz41bxg4hrvtQREay+ZepHcihxKUcLdzSNskhO3SB6A3COXhvdBCVqgt5Q9jzG5uTnxo3iCRZXXvrJCzRkGuQwcsaxRToSaNgQhpg9+oR9jtL/tsbgeWrOOC/wwJy45qncSfg1cUfJdL8mJsRtnwFlglfmSoWrxN3bRDLK6UV9SVw9d6mnj7WebFZwS+Y+zi4qFfYcY9O8J67Ko1D/AR8ocQssR3t1HlId0g2CUR+S5Vvi9qIO4yopJ8XVY8l4wBOtuDvqSuZoy4fhxGJRCp+K28TZvCHH2Ir6sri6HWWCSwxxr2EsFf6T87II3J/fFNf8yASe+ElxeS5d4gBX3EZcAGaAuMAlEBe4BOICh+T8AIU45zBAbve4AAAAAElFTkSuQmCC" SearchSteps="FuzzySelector, Image" Text="Company" TextMethod="AttributeText" TextSelector="&lt;webctrl type='' tag='DT' /&gt;" />
+                              <uix:Target DesignTimeRectangle="511, 372, 170, 20" FriendlyName="'Occupation'" FullSelectorArgument="&lt;webctrl idx='18' tag='DT' /&gt;" FuzzySelectorArgument="&lt;webctrl type='' tag='DT' aaname='Occupation' check:text='Occupation' /&gt;" ImageBase64="iVBORw0KGgoAAAANSUhEUgAAAK4AAAAYCAYAAABjn8aGAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAHfSURBVHhe7ZjhkYQgDEavWrugDGqxDMuwDA48IJ8Q3FtnbjXe92byByHC8IjsfgVCDEJxiUkoLjEJxSUmobjEJBSXmOTfibv4KUxTCh+W3EbsoYi7BL9tLISbw5qfmmGdg8vz92AoxX0Ge3EXnzfVhbmYqrVZYCAueQYgrlRa1xhaq9Su8q5hdrm9BlSxKrxEytvngjzZsHV2uY8PHt8BBkrl1J4rX438XHLjWvr+KDuOmfG9Fr9ED0HEPaqs3TPZaNngJOCPuKocMcfb4irvK4dq8TjPPkdMolbcbm61X8knuSRVmU9p09ZPPkkVVzZHuftB9UwbpYpZOd7U9yqu5NervjAWcj+Ptp+Wt+3Tz0c5KOSjnBD3xaYdVe7IWXH7+cE4jDLmV+IO1lLXMPqCUNyrOXFVuFjcrQ3upKMxFPfRnPpxpokl/PFVIfVRDsc5cbX59H36+VDcqwFxI1q1VCuoJmfazFGFisQ824FoqhkKNhS3lbCTEkRS5MKDOM5d1ifjytoo7v3Yi7sBn+ESKGAFNq9GuX9GqqAS8o8AtONfXq24TaAj+z4ueN/KFcFDkSIm6CVM9GtW30Vxb4Mi7vXochEiUFxiEopLTHJLcQl5BcUlJqG4xCQUlxgkhG+tRIG2rNBOFgAAAABJRU5ErkJggg==" SearchSteps="FuzzySelector, Image" Text="Occupation" TextMethod="AttributeText" TextSelector="&lt;webctrl type='' tag='DT' /&gt;" />
+                            </scg:List>
+                          </uix:TargetAnchorable.Anchors>
+                        </uix:TargetAnchorable>
+                      </uix:NGetText.Target>
+                      <uix:NGetText.Text>
+                        <OutArgument x:TypeArguments="x:String">[CompanyName]</OutArgument>
+                      </uix:NGetText.Text>
+                    </uix:NGetText>
+                    <ui:MultipleAssign DisplayName="Multiple Assign" sap:VirtualizedContainerService.HintSize="334,129" sap2010:WorkflowViewState.IdRef="MultipleAssign_2">
+                      <ui:MultipleAssign.AssignOperations>
+                        <scg:List x:TypeArguments="ui:AssignOperation" Capacity="4">
+                          <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_3">
+                            <ui:AssignOperation.To>
+                              <OutArgument x:TypeArguments="x:String">[FName]</OutArgument>
+                            </ui:AssignOperation.To>
+                            <ui:AssignOperation.Value>
+                              <InArgument x:TypeArguments="x:String">[NameArray(0)]</InArgument>
+                            </ui:AssignOperation.Value>
+                          </ui:AssignOperation>
+                          <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_4">
+                            <ui:AssignOperation.To>
+                              <OutArgument x:TypeArguments="x:String">[LName]</OutArgument>
+                            </ui:AssignOperation.To>
+                            <ui:AssignOperation.Value>
+                              <InArgument x:TypeArguments="x:String">[NameArray(2)]</InArgument>
+                            </ui:AssignOperation.Value>
+                          </ui:AssignOperation>
+                        </scg:List>
+                      </ui:MultipleAssign.AssignOperations>
+                    </ui:MultipleAssign>
+                    <uix:NClick ClickType="Single" DisplayName="Click 'Generate'" sap:VirtualizedContainerService.HintSize="334,166" sap2010:WorkflowViewState.IdRef="NClick_2" KeyModifiers="None" MouseButton="Left">
+                      <uix:NClick.Target>
+                        <uix:TargetAnchorable BrowserURL="https://www.fakenamegenerator.com/gen-random-us-us.php" DesignTimeRectangle="415, 471, 71, 23" ElementType="Button" FriendlyName="'Generate'" FullSelectorArgument="&lt;webctrl tag='INPUT' type='submit' /&gt;" FuzzySelectorArgument="&lt;webctrl tag='INPUT' type='submit' aaname='Generate' check:text='Generate' /&gt;" ImageBase64="iVBORw0KGgoAAAANSUhEUgAAAEsAAAAbCAYAAAA0wHIdAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAU+SURBVGhD7ZjLbyNFEMb3mjgoTwQS3EDiBNLCZTlz4s5lQTwEHOC+Dpvw36xJOEHYZHloQ5CScGBBPJR1QjybXezEcRx7Ys/G70dSfF/P9HjstJeRFonDUFLJnu6q7q5fV9VYviT/S2gZCuv8/FzOzs4ip4x7mFyARYfG6po4H3wkpctX5OSJJyOjpZdflYcffqziJ4dB8WGRaDt7KOW33jMuFDUtv/2+4hHMNB9Wp9OR0pvvGh2jquRBLloULKbc6WefGx2iruSiS/IS06zVaon92utG46gruZAPOSlY9Xpd7BdeMhpHXcmFfBQsVYK5nNjjTxmNo672xNNyikZPTi6s01OjYVDtsXlplVXp9snZxrzR/r/W4uyP4nYaR9qzM0absEo+oWH1NhZpr1+XWyPjSpPrDkYcaT3mYf5ttcdmZA9nbqsTO1KfnVZjJtswGhpWERlV0xm1uyA/xSblABtT7+D7znrKP0wQqiuWNDAezMqzMgFr6b/1esob9kRnbSFheSOW1L3vnBu0p3QSM1IYW5Sm99wTdy8bc70fA5R/zrzQsLL+DYnUEhNyGLihI3zfik3JX2PTktcBlTcliaxbvrbp+VlSjc1LKQCcWbmlspLPi1LAfNObr9wYlxXM7++6z4SynbhIpbM+J/ldR+xrbpb39kMmxafldnxTWuq5LEXYrI5OiIWxrhpLyT58VkYWpKKeH10doWAxW6x4L50r8Sk5NtxMC4crecGxTO8DXjK2KKdqxJFaHBniwehgnnAfaFiAe+LvkZITwE9j/p4Pc0H+8GGlJI0gv4LeGZ1UuhubVlm+HZuTordHMzElSR+WI1Wc+wB2xxu9Ne9hDwuXZHs+rcTwUg0FqwjnFAJxN+UhpiWDsTXcEm9SH6YWn5OyzhyDNBJzPVgbcyo70/rggHVoyBxfMH8QgPUQQdL/GHp0oexdaSQm5c8ArBouMw9YRe9CTdLFuQpY08QhfGaBvr4xlgwPycMGb64CWBpGC5nDMlqGfgm9Cf11tB9WDv5BWJkAjAzs6c/sof8q9JfAfAWweK4CQLkl5agyWx65LsfeHoS1MwArB1hHGhYyi3tQuQf3+g0Z/ViwqFkssOpv7PaQ/oxzy/P2jWBAMwrIIRp7Aw29ESxDA6x9wCx4812sz8ugHrAP4oK2BmAVEbjlN/2UlBDofbQHt/94mdXXBlxYGwGADbyU9D5VLM8Xgyl+amhYBMO+sIKb0wH1CW5pF4fdQv9Y8ptsUNgzHp1ZBaz/PUo7bSoTrP/7ACzab7O39dnjrRbIrAeYd3/aaCG0KcSx4EHsF7YYxmpiEBoWlYuw6TIglpUusyXoJiDxrcjy3EEQX49MqHm+ofj5LXwY2BrGVUniO2Hxk88/YD4LP2bwBtbiuvp3HP034bc16tp+B1v2TJ6Ja9CeJUS7bzDHT9pxvyOs+TN+2nCea6q3Icb3oFxH76PPSp9QsCqVihRefMVoqJV9glB4yKDmodqGmw3a8JmZoMcJlWvxU8/rtxDXCvpSOcZeMmg7zJ6qe4/eg0pfnm9YHMP6FbmQjw+rWq1K/o2rRuOoK7mQj4Kl/3XIfbFkNI665pZu9v51YHNrt9ti27bkrr5jdIiqkge5kA/F/6e0VqtJ9u5dKT77vNExalp85jnJJpOKC/n4sCj8r9lxHMlkMpL55FM5unxFChEDx3jziJvxkwN5XPgPnsKaZLrxNZnP5yWdTsve3p5YlhUZZbyMm/GTA3mQixYfFoUT3W5Xms2mSj++MukUFWW8jJvxk0MQlIjI3+rtPhQCWRLZAAAAAElFTkSuQmCC" InformativeScreenshot="fa2995229d23807bf7f8f1a69c37ffc1.png" ScopeSelectorArgument="&lt;html app='chrome.exe' title='Generate a Random Name - Fake Name Generator' /&gt;" SearchSteps="FuzzySelector, Image" Text="Generate" TextMethod="AttributeText" TextSelector="&lt;webctrl tag='INPUT' type='submit' /&gt;">
+                          <uix:TargetAnchorable.Anchors>
+                            <scg:List x:TypeArguments="uix:ITarget" Capacity="1">
+                              <uix:Target DesignTimeRectangle="148, 250, 146, 36" ElementType="Text" FriendlyName="'Name Generator'" FullSelectorArgument="&lt;webctrl aaname='Name Generator' idx='1' tag='A' /&gt;" FuzzySelectorArgument="&lt;webctrl aaname='Name Generator' type='' tag='A' check:text='Name Generator' /&gt;" ImageBase64="iVBORw0KGgoAAAANSUhEUgAAAJYAAAAoCAYAAAAcwQPnAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAALXSURBVHhe7ZhNbtswEEaz6M+qyx7Dh0tOFF+hJ9AdAlQBvPM2CAR46Q1rShzyIzmUlchTyMg3wANiyhxyho9KkIfdbucIuTUUi5jw8P7rt/P8+faDkFX8/f5zdMlDscjNoFjEBIpFTKBYxASKRUygWMQEikVMoFjEBIpFTKBYxASKRUy4uVgv3eBSvLqjPHvs3DmMnp7zOZvh+TXsEGNwb4/KdzfJ3p3Crs/dk/L8/2EsFhS4abGe3FvcNlyGOI5jW+ZLiDW4s/9x6NyLf6aIdezDAEa/T/niG2Rwpx6EHXOiDGUj82djYN4C3LP2djr2KFY6PAlcO9bUd/keivXLC4jyxme+ztADv0Y95xLSX61mH/F5vW+84Gnf+7jOmheAoViXRoWmjBtUxcKDhMbIIcCvpunwsHlhbswrueQ7KTc2bVoLUdZtIocjEqS5Ile6LK39pR5FIWOdU15NIBFLlUGRJ+b2NHs0f8m3K5YU4AtXxGrOlUbBG6uSRGnmmFfmxOeYJ70VEo3DUIj7AwHLPdcSl/nlc6qprKHqQ4uqLr2WumdL9r0OY7EuY6H4U6eJBW8LDGnAJ8SKz9VYKFZcVwIuSSuaB1Tkr3LncU0svb45sWDfKE0h5f2JBcVKTGLBeCimaugasZRD0Wk0/kJeS/t7yHKx8I2Vo4sF61f9+ZJi4dgUo1hKg28hlrb+NdKc/LDLXEukvSrWZ/4k8GjzFoml77tc4y7FwoJ9jI2pGjV3I5eL1byhfj08qAyYo16I+YMb9xnWuirWZUzvkd/DVKcqlpInrgV5VEFir6WPqV6R9E7FwvFUDI75ouO/FFaJVXwPoylWIK6XRyZRJiHEB8QaUdeaE6uec+rlM/Y6rTeG0icJtV9bFYsQD8UiJlAsYgLFIiZQLGICxSImUCxiAsUiJlAsYgLFIiZQLGICxSImUCxiAsUiJmRiHQ4HR8itoVjEgIP7B8xZqo6JsQ9/AAAAAElFTkSuQmCC" SearchSteps="FuzzySelector, Image" Text="Name Generator" TextMethod="AttributeText" TextSelector="&lt;webctrl type='' tag='A' /&gt;" />
+                            </scg:List>
+                          </uix:TargetAnchorable.Anchors>
+                        </uix:TargetAnchorable>
+                      </uix:NClick.Target>
+                    </uix:NClick>
+                    <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="334,91" sap2010:WorkflowViewState.IdRef="LogMessage_2" Level="Info" Message="[FName + LName+PhoneNumber+CompanyName]" />
+                    <ui:AddDataRow DataRow="{x:Null}" ArrayRow="[{FName, LName, PhoneNumber, CompanyName}]" DataTable="[dtNameList]" DisplayName="Add Data Row" sap:VirtualizedContainerService.HintSize="334,22" sap2010:WorkflowViewState.IdRef="AddDataRow_1" />
+                    <Assign DisplayName="Assign" sap:VirtualizedContainerService.HintSize="334,60" sap2010:WorkflowViewState.IdRef="Assign_9">
+                      <Assign.To>
+                        <OutArgument x:TypeArguments="x:Int32">[IterationCounter]</OutArgument>
+                      </Assign.To>
+                      <Assign.Value>
+                        <InArgument x:TypeArguments="x:Int32">[IterationCounter + 1]</InArgument>
+                      </Assign.Value>
+                    </Assign>
+                  </Sequence>
+                </ui:InterruptibleWhile.Body>
+              </ui:InterruptibleWhile>
+            </Sequence>
+          </ActivityAction>
+        </uix:NApplicationCard.Body>
+        <uix:NApplicationCard.TargetApp>
+          <uix:TargetApp BrowserType="Chrome" IconBase64="iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABXAvmHAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAPlSURBVGhD7ZnbSxRhGMYLwvPmeiK8UIM06Kq/wCsDk4qCuinzFP5DgRRJ90GoBNFNZgaeD+vu6h5a1/V8yA4XqRmi7tvzDA1sMs5+uzPuauzAD2Fwv/f5zXzfN+/OnvvhKJOzjLLA9xRjlMEIUwEO9A18BV/ABlh3lMraCcGxWYO1WJO148mYCnCATbBWUCrzuUUSynFKIKdQ/MBnMxyTY7MGa62iJmszg1E2HVMBXgWGjxSVS6SuQUL3Hoj/7n2ZOSE4NmtEbjRoNSnBDEbZdI4V4K3jrVzILxF/ZbXsuD0S3d+Xw729E4U1fnmnxV9Vo9VmBrNpZCrA+TibXywuCGz7/JKqYycQFBcEWJsZkhbgovqMQUYqrshWCgW2ITBSWSNB1GYGSwIBDDIEgZ8pFNiCwBDueiDPJoHBjEBih+1TKNUCti7ihASiUVkfGZW5112y2NUtS109spwAK2Cj542sPe2QmfIq69toogLRw0Ppa2qVV9kOeVdQLL2gr6BEmU9g2FEiHtQN4yG2ir+WHmTJCAw/bpX3WQUygc/N8CGIUKoEwSxY+BveUiuRrIALd2A4+6KEEGQFQYyatuNgPduauWQF3E1tMg6BeYRnGAZJBD10vOA6tgtMYAoNYA1wSnAqLCmyDHgXdOm0CQw0tsjbC/kymOuUibwicSkwBbwgiAfXAsQpoiphrwC20ZXePgk/75TFFy9lBawqst75UjbxN1JbJ/OQibf/69gqYPXgHQy3tmtfbLgLxduByKkT8EPAm12orYkzKTANARd2MS5srgOjbLGcOgEvBCbPusCZvgM+CLghkLY1wK2UQZLh8OBAQi3t2muWtOxCDO/ueCYfG5tluLlNxpqfyLgCk8ADgsB/7brMoSZrM4NRtljsFcBV7H/YJN3ns+VDlkNrKYYUYPPH/onbZxj19E40LQJj6IX6Ed6LVpqt8RzmcjwigM0fFy7bCJU2Wsd2gSl0o2O4mgzFzzOMKtx1GJy1Va4+sV3AAwHu44sQUNkGrXJiApwOqtPAChmB2CMjkAQZgdgjI5AE/78A3xCr/j5AAS8E9H4+7QJ8MxCCwFhFtdIvNBTwQcADAdV+3iqmAnzFx9bWQwHXlPYj3MHuruwfgecOdn/L/s6OhB61aD+ZqvbzVjlWgLDB4pUMOi+Jr7ZOpm7ekdH62zJUf+sfRsAEzs8A/+WrEkEnqvpexyqmAryCDMLGLJjrFDeu7DgYxRSJhd2nC+f5TYp3LJF+3iqmAgzAjpISDMWFyfed7N2PQkm+jebCZ/hUTB9iKkAoQRiIMkTv33X084T/p3/GaDy7iStwuimTP2f2Ock90e+dAAAAAElFTkSuQmCC" InformativeScreenshot="49f327de0c5a44d7d2509c7ff2e13a91.png" Selector="&lt;html app='chrome.exe' title='Generate a Random Name - Fake Name Generator'/&gt;" Url="https://www.fakenamegenerator.com/gen-random-us-us.php" />
+        </uix:NApplicationCard.TargetApp>
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+            <x:Boolean x:Key="IsPinned">False</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </uix:NApplicationCard>
+      <Sequence sap:VirtualizedContainerService.HintSize="200,66" sap2010:WorkflowViewState.IdRef="Sequence_35">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+            <x:Boolean x:Key="IsPinned">False</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+        <uix:NApplicationCard AttachMode="ByInstance" DisplayName="Use Browser Chrome: Rpa Challenge" sap:VirtualizedContainerService.HintSize="502,1783" sap2010:WorkflowViewState.IdRef="NApplicationCard_2" InteractionMode="Simulate" Version="V1">
+          <uix:NApplicationCard.Body>
+            <ActivityAction x:TypeArguments="x:Object">
+              <ActivityAction.Argument>
+                <DelegateInArgument x:TypeArguments="x:Object" Name="WSSessionData" />
+              </ActivityAction.Argument>
+              <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="468,1567" sap2010:WorkflowViewState.IdRef="Sequence_41">
                 <sap:WorkflowViewStateService.ViewState>
                   <scg:Dictionary x:TypeArguments="x:String, x:Object">
                     <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                    <x:Boolean x:Key="IsPinned">False</x:Boolean>
                   </scg:Dictionary>
                 </sap:WorkflowViewStateService.ViewState>
-                <While.Condition>[IterationCounter &lt; UserIterationsRequest]</While.Condition>
-                <Sequence DisplayName="Do While Sequence" sap:VirtualizedContainerService.HintSize="426,3061" sap2010:WorkflowViewState.IdRef="Sequence_27">
-                  <Sequence.Variables>
-                    <Variable x:TypeArguments="x:String" Name="FName" />
-                    <Variable x:TypeArguments="x:String" Name="LName" />
-                  </Sequence.Variables>
-                  <sap:WorkflowViewStateService.ViewState>
-                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                    </scg:Dictionary>
-                  </sap:WorkflowViewStateService.ViewState>
-                  <ui:GetFullText DisplayName="Get Full Text 'H3'" sap:VirtualizedContainerService.HintSize="384,106" sap2010:WorkflowViewState.IdRef="GetFullText_4" IgnoreHidden="False">
-                    <ui:GetFullText.Target>
-                      <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="746410f3-7314-45ee-a222-f6caf3eff5b1" InformativeScreenshot="f08db34a40ff5cb79e64a579a6cbb14d" Selector="&lt;webctrl tag='DIV' id='body' /&gt;&lt;webctrl tag='DIV' class='content' /&gt;&lt;webctrl tag='DIV' id='details' /&gt;&lt;webctrl tag='DIV' class='content' /&gt;&lt;webctrl tag='DIV' class='info' /&gt;&lt;webctrl tag='DIV' class='content' /&gt;&lt;webctrl tag='DIV' class='address' /&gt;&lt;webctrl tag='H3' /&gt;" WaitForReady="COMPLETE">
-                        <ui:Target.TimeoutMS>
-                          <InArgument x:TypeArguments="x:Int32" />
-                        </ui:Target.TimeoutMS>
-                      </ui:Target>
-                    </ui:GetFullText.Target>
-                    <ui:GetFullText.Text>
-                      <OutArgument x:TypeArguments="x:String">[FullName]</OutArgument>
-                    </ui:GetFullText.Text>
+                <ui:ForEachRow CurrentIndex="{x:Null}" DataTable="[dtNameList]" DisplayName="For Each Row" sap:VirtualizedContainerService.HintSize="426,1473" sap2010:WorkflowViewState.IdRef="ForEachRow_2">
+                  <ui:ForEachRow.Body>
+                    <ActivityAction x:TypeArguments="sd:DataRow">
+                      <ActivityAction.Argument>
+                        <DelegateInArgument x:TypeArguments="sd:DataRow" Name="row" />
+                      </ActivityAction.Argument>
+                      <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="376,1324" sap2010:WorkflowViewState.IdRef="Sequence_40">
+                        <sap:WorkflowViewStateService.ViewState>
+                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                          </scg:Dictionary>
+                        </sap:WorkflowViewStateService.ViewState>
+                        <uix:NTypeInto ActivateBefore="True" ClickBeforeMode="None" DisplayName="Type Into 'First Name'" EmptyFieldMode="SingleLine" sap:VirtualizedContainerService.HintSize="334,226" sap2010:WorkflowViewState.IdRef="NTypeInto_1" Text="[row(0).ToString]">
+                          <uix:NTypeInto.Target>
+                            <uix:TargetAnchorable BrowserURL="https://www.rpachallenge.com/" DesignTimeRectangle="452, 561, 255, 46" ElementType="InputBox" FriendlyName="'INPUT  KivED'" FullSelectorArgument="&lt;webctrl id='KivED' tag='INPUT' /&gt;" FuzzySelectorArgument="&lt;webctrl id='KivED' tag='INPUT' type='' aaname='' /&gt;" ImageBase64="iVBORw0KGgoAAAANSUhEUgAAAQMAAAAyCAYAAABYgL53AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAACoSURBVHhe7dYBCcBAEAPB+hdxVq/PQt9EZyAWljwLcIgBEDEAIgZAxACIGAARAyBiAEQMgIgBEDEAIgZAxACIGAARAyBiAEQMgIgBEDEAIgZAxACIGAARAyBiAEQMgIgBEDEAIgZAxACIGAARAyBiAEQMgIgBEDEAIgZAxACIGAARAyBiAEQMgIgBEDEAIgZAxACIGAARAyA3BjNjZj/cxzMAIgbAsfsC04t3hNp3NvwAAAAASUVORK5CYII=" InformativeScreenshot="67e6e52c83ce70f1b94678185ca52794.png" ScopeSelectorArgument="&lt;html app='chrome.exe' title='Rpa Challenge' /&gt;" SearchSteps="FuzzySelector, Image">
+                              <uix:TargetAnchorable.Anchors>
+                                <scg:List x:TypeArguments="uix:ITarget" Capacity="2">
+                                  <uix:Target DesignTimeRectangle="452, 542, 64, 17" ElementType="Text" FriendlyName="'First Name'" FullSelectorArgument="&lt;webctrl aaname='First Name' tag='LABEL' /&gt;" FuzzySelectorArgument="&lt;webctrl aaname='First Name' tag='LABEL' type='' check:text='First Name' /&gt;" ImageBase64="iVBORw0KGgoAAAANSUhEUgAAAEQAAAAVCAYAAAD/wUjgAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAALRSURBVFhH7Zbhh61AGMbv//9HDMMQQ8QQsUTE0qc4RERERBwiog/PvtPUOc205+6xZ93L6mGoaZp539+8z9QfnLJ0AnF0AnF0AnF0AnH0HJB5xrxe/nZZQIamQFHsW4MBHVKPQb5f11HPaxoHjA9ITl2FshvXu1VTh2pZ8//JAlKGDF4QIYq2lqOl/rGr4cb+tXqkkiEs11tHfSrBmI9sz7lPIVmIB6/8Ex2AfJZAm0fINZnturmiSCLEhclmqDPEC8AE+UquzUNIvgE2YPfSQISk5me4MTkAGVBnsdmchOYYGuS0RrmUUEvXOZprgSQKEYYx0srMdK1SxEpB0diit0t07vV4s+FxVh+q8Skg+359LYSEH2eougmo3+heEYgBfZ1QQh4Syn5oMoSC0bjNerY0EJk2uCgGdVnLzwLS450qTASUVNOjKxMEUkAwibTXz0uEjIH5b2Q9MrZ+LgRBUPA1qL5Hkykaf6/CqYoo1gBJ2WHoNVwPTL7TSnf91TJbVbhApIlo0ZD5YEF+S1ifQ/WyK19bZplnvEAxhYXJHgiB5l5iV1abwLOA2JZbYhH2OwXF62c6uisB5nirTL+RjpH66vWWdACi8gHDYNp2ILpA7CQ7ZIpIMw4/TFG0G5ongZDGiwJTF4w7IMsZc3hZQ9gDcc6bMqQdT60dv69jKopTFYld49Tn76h+yzKfJjmPt7I1xJ8HQkiMdZL4BmRaIZEp75p0NX0XSItEeIjr+4a7G6/1MhC9IA8LSklrRkGJmU/0CqRYHhxkAyEt1qEzYUtySV7Q+zczoo71l+m7QLTjPAgKaJtxJgtKx3Y/UCFkmUCAcSpBzsH9FO26rX0e0KG2S3KnAxDSVZ8Bu7Fjk8CnL5Wem1MLsvQFy2jR1zHSUDnZhWLlEnFl/09YQF7ThOnBT9irmifLOD+gGY+m/EEgv0MnEEcnEEcnEEcnEEvAB8RzeOvXoETQAAAAAElFTkSuQmCC" SearchSteps="FuzzySelector, Image" Text="First Name" TextMethod="AttributeText" TextSelector="&lt;webctrl tag='LABEL' type='' /&gt;" />
+                                  <uix:Target DesignTimeRectangle="8, 160, 249, 64" ElementType="Text" FriendlyName="'RPA Challenge'" FullSelectorArgument="&lt;webctrl aaname='RPA Challenge' tag='A' /&gt;" FuzzySelectorArgument="&lt;webctrl aaname='RPA Challenge' tag='A' type='' check:text='RPA Challenge' /&gt;" ImageBase64="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" SearchSteps="FuzzySelector, Image" Text="RPA Challenge" TextMethod="AttributeText" TextSelector="&lt;webctrl tag='A' type='' /&gt;" />
+                                </scg:List>
+                              </uix:TargetAnchorable.Anchors>
+                            </uix:TargetAnchorable>
+                          </uix:NTypeInto.Target>
+                        </uix:NTypeInto>
+                        <uix:NTypeInto ActivateBefore="True" ClickBeforeMode="None" DisplayName="Type Into 'Last Name'" EmptyFieldMode="SingleLine" sap:VirtualizedContainerService.HintSize="334,226" sap2010:WorkflowViewState.IdRef="NTypeInto_2" Text="[row(1).ToString]">
+                          <uix:NTypeInto.Target>
+                            <uix:TargetAnchorable BrowserURL="https://www.rpachallenge.com/" DesignTimeRectangle="452, 469, 255, 46" ElementType="InputBox" FriendlyName="'INPUT  Kg9Zu'" FullSelectorArgument="&lt;webctrl id='Kg9Zu' tag='INPUT' /&gt;" FuzzySelectorArgument="&lt;webctrl id='Kg9Zu' tag='INPUT' type='' aaname='' /&gt;" ImageBase64="iVBORw0KGgoAAAANSUhEUgAAAQMAAAAyCAYAAABYgL53AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAACoSURBVHhe7dYBCcBAEAPB+hdxVq/PQt9EZyAWljwLcIgBEDEAIgZAxACIGAARAyBiAEQMgIgBEDEAIgZAxACIGAARAyBiAEQMgIgBEDEAIgZAxACIGAARAyBiAEQMgIgBEDEAIgZAxACIGAARAyBiAEQMgIgBEDEAIgZAxACIGAARAyBiAEQMgIgBEDEAIgZAxACIGAARAyA3BjNjZj/cxzMAIgbAsfsC04t3hNp3NvwAAAAASUVORK5CYII=" InformativeScreenshot="25d6bddb096f337dbe5bfdf5f2b0f568.png" ScopeSelectorArgument="&lt;html app='chrome.exe' title='Rpa Challenge' /&gt;" SearchSteps="FuzzySelector, Image">
+                              <uix:TargetAnchorable.Anchors>
+                                <scg:List x:TypeArguments="uix:ITarget" Capacity="2">
+                                  <uix:Target DesignTimeRectangle="452, 449, 63, 17" ElementType="Text" FriendlyName="'Last Name'" FullSelectorArgument="&lt;webctrl aaname='Last Name' tag='LABEL' /&gt;" FuzzySelectorArgument="&lt;webctrl aaname='Last Name' tag='LABEL' type='' check:text='Last Name' /&gt;" ImageBase64="iVBORw0KGgoAAAANSUhEUgAAAEMAAAAVCAYAAAAdHVOZAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAALrSURBVFhH7ZZvp61AFMbv9/8QwzBERETEJiIOvYqIiIhNRAwR+8Vz1kxTzex9zt7HOce9L24P0TR/1lq/WWumPzi164Rh6YRh6YRh6YRh6YRh6YCxDGjbAYtp/ljLDDnfTONOylYzYDbNVQuGtkYvTfMf6IAx5vD9HKNp/lRj7oPFjWndSdliDEExmQ9KI3Kf4bMpf0OvYdxG1FmCJEmQ5g3GqUGWlLju3TW1VX+KvDXBXUvEPgfzQj2v3AZvUraET0+Ag8cjDNkVSPXaGa0h0ZcJsmZNnSu9l/2kfYvjmHxroZeaWuRphCiisfUIJzetWJK0QHeXhc9hLC0SweAlNHEYtTO+EOAshvZ5KhAwH1k3Qg4lIhobVVRoskcRC7AgRV1/kPrGVl9FYFFlysWFMb5RZomQAuoxDrQBoQ9B6/v56mETMzAW4ELlJnW/gCAAUaAgjRj7QvuzZ5+ORSDMGgxyjcUj39+sgJ/CkEVgObtqUQFsMLoLuEjRGfzL0KKhHVR6WSba1owqUgCVBRtGhwv3kDkZdUXmuTCcMpNqY4Q7p45pQwoojyaCyy/t+t1I+cgvnWm9gKEMbsZ3qXEbDAqmTWlBxuGFKQrKkC0tvwaDNFeIWIRqtmA4Ng7Z/qh3d/kGMe20465lR2cSp+yh7NgfTt8I1ob0KYxrRhPc7VEfIR4cXTD1JRLauW23vgyDNOtyyZBuMBYDyLnaFp1F34WhYvHSDlJK97FuvOdnBgWu6iq/mgl0AJURHYwbjIbSkOYMulMN98CSNRVXGLV+f9CDrbVcGN0wa4Br4ILmb8eN7FJ9A30Xho5FxKi3BW9UdgTfLjUXBqX7nkLhmj5TFRMQRmcDHZzcR1oop9wyYXoeB/diVJuxsURIB9gRoKWPwOvD2Bo798gCBZ7W5vSQP/kPykRpqukC2GPh8NOWIjh0wHihZXEuqTvdqN+8/rZuy+/9CBrdPnH2yzD+B50wLJ0wLJ0wLJ0wdgHvAuMkOuxq/28AAAAASUVORK5CYII=" SearchSteps="FuzzySelector, Image" Text="Last Name" TextMethod="AttributeText" TextSelector="&lt;webctrl tag='LABEL' type='' /&gt;" />
+                                  <uix:Target DesignTimeRectangle="441, 623, 116, 36" ElementType="Button" FriendlyName="'Submit'" FullSelectorArgument="&lt;webctrl tag='INPUT' type='submit' /&gt;" FuzzySelectorArgument="&lt;webctrl tag='INPUT' type='submit' aaname='Submit' check:text='Submit' /&gt;" ImageBase64="iVBORw0KGgoAAAANSUhEUgAAAHgAAAAoCAYAAAA16j4lAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAPhSURBVHhe7Zw/a9tAGIf1TUqHzvkIHTu2W8dCqaFbxw6ePHUxFE9ZDIUQ46VQyOIptHhpFmOIE+LJIXgIToJCiIntxLm3v5+kU06K2hLsNpZ4BQ/Wnd67C/fo/shY8YwxQm5vb2U+nwfc3NzEXF9fKyuM68r6o0vr1bNirczZbCbT6VQmk4mSI+iM7qx0K9rjSZD5oyHz98/EvPKUHEOHdEmndOvRNu8AlVsc6JJO6daj6cvLy8xAJb/QKd16nLt9388MUvILndKtx6F8enqaGaTkFzqlW+/q6kpOTk4yg5T8Qqd0q4ILSkLwaDTKDFLyC52q4AKjgguOCi44KrjgrJ7g9XUx/QMxQ9DBeflJ8nodea0PybyAN2LaTTE1m36OOKSZF/MF19ecMqD2Cflsx8lLU/kYlk/XXccn02X8PYl2XFC/W9d/ZrUE7xyLERHjR4JnSAjy6o7k3rnI+HuyXADksey2TaPTx8gYH4Z1kfGEFaIO5wbZPgjz+pAY1+WCtvtRuVTdcT1VtG3b8Bk7uUsPv0VlHocVEvw5FOR2fgl3PyWPMBJs3gMFJ+ojO4eIwk1TjdKRYJEu2nPiLGW0HUX8tW4S1Aex6fxHYoUER4LaqSk5zaKC6ygr5/iM0oEQjDjcSGbnRTKWdI5xPTxU8EKEnSZjdI5d27JYRHDptZgBplC3vBVCkbOfd/lBPGYViu8jXwUvgSo2O9E6KRxlQ4hIy37oGpw+xpDlbqiskBLaxplpOTNIG9M5pQejXgUvj/JLdHQr2rCgIztORz50BPcxCqsYuWQDMayT5e166wrhZspHu0F57Mp9to1PFfyvwGgaoL/cqXPRNbhk46KR6gqpYMfL9XgD561umM/RroKXQA2dO0PntjOmZO5wbZrTpuDRJ/3cuoUYd/P0WwmR4A5GNNMJIdENNcDOeYQY++ikgpdBOCXKDPKCdXcNI4nS0ZEDTLM2zm58fHT6OqbyMna+XzGtMm8IeXF9kQR3iq5C2JA3DB6T7JcWaSEb4YYqEaOCl0QFMkZ2kxUeZojRlH4+5WYsWp/tcT8ulJA+DHfpW87j0D0huIbRK+7NooKXDabKyh8elWIwyiuprx6VBCsqWFkWKrjgqOCCo4ILjgouOCq44KjggpMQrD98Lx76ZkPBiQXry2fFJH75jK8Ynp2dyfTd08xAJX/QZeCUr4/y/zrwXdLjrzW5euv8qkHJJXRIl3RKt8Eb/hcXF3J0dCTdbleazaY0Gg3Z3NxUcgSd0R0d0iWdBm/48x91cDHmnM0L+/v7sre3J71eL2B3d1dZYawnOqM7OqRLOp3P5/ILEgz72hLASLsAAAAASUVORK5CYII=" SearchSteps="FuzzySelector, Image" Text="Submit" TextMethod="AttributeText" TextSelector="&lt;webctrl tag='INPUT' type='submit' /&gt;" />
+                                </scg:List>
+                              </uix:TargetAnchorable.Anchors>
+                            </uix:TargetAnchorable>
+                          </uix:NTypeInto.Target>
+                        </uix:NTypeInto>
+                        <uix:NTypeInto ActivateBefore="True" ClickBeforeMode="None" DisplayName="Type Into 'Phone Number'" EmptyFieldMode="SingleLine" sap:VirtualizedContainerService.HintSize="334,226" sap2010:WorkflowViewState.IdRef="NTypeInto_3" Text="[row(2).ToString]">
+                          <uix:NTypeInto.Target>
+                            <uix:TargetAnchorable BrowserURL="https://www.rpachallenge.com/" DesignTimeRectangle="452, 296, 255, 46" ElementType="InputBox" FriendlyName="'INPUT  CzuUL'" FullSelectorArgument="&lt;webctrl id='CzuUL' tag='INPUT' /&gt;" FuzzySelectorArgument="&lt;webctrl id='CzuUL' tag='INPUT' type='' aaname='' /&gt;" ImageBase64="iVBORw0KGgoAAAANSUhEUgAAAQMAAAAyCAYAAABYgL53AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAACoSURBVHhe7dYBCcBAEAPB+hdxVq/PQt9EZyAWljwLcIgBEDEAIgZAxACIGAARAyBiAEQMgIgBEDEAIgZAxACIGAARAyBiAEQMgIgBEDEAIgZAxACIGAARAyBiAEQMgIgBEDEAIgZAxACIGAARAyBiAEQMgIgBEDEAIgZAxACIGAARAyBiAEQMgIgBEDEAIgZAxACIGAARAyA3BjNjZj/cxzMAIgbAsfsC04t3hNp3NvwAAAAASUVORK5CYII=" InformativeScreenshot="6092cbf3338f0d103c8a987ae7dcafce.png" ScopeSelectorArgument="&lt;html app='chrome.exe' title='Rpa Challenge' /&gt;" SearchSteps="FuzzySelector, Image">
+                              <uix:TargetAnchorable.Anchors>
+                                <scg:List x:TypeArguments="uix:ITarget" Capacity="1">
+                                  <uix:Target DesignTimeRectangle="452, 276, 89, 17" ElementType="Text" FriendlyName="'Phone Number'" FullSelectorArgument="&lt;webctrl aaname='Phone Number' tag='LABEL' /&gt;" FuzzySelectorArgument="&lt;webctrl aaname='Phone Number' tag='LABEL' type='' check:text='Phone Number' /&gt;" ImageBase64="iVBORw0KGgoAAAANSUhEUgAAAF0AAAAVCAYAAAAkeuLCAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAOcSURBVFhH7ZZvx7RAFMaf7/8hIoaIiIiIGGLp1bIMERERscSy7IvrOWdmamv/3ff93LtPb7qI6jRzzvnNmTP9wab/rg36Ctqgr6AN+graoK+gDfoKWkAfGgWl7FV3OJ2tgVRlAlllH1bTgEbVONqnURx31c2CfaM+kfcCehk78MIEScJXBN8VSCqTDNviUt+uqBKx40CktX024tj8vLdP79Un8r6DvnCgYjhBQfVlbeqIKs8QRRESqdBfzGdGA9q9tAsmsW95lNFQSsiyRV1kiGlsnBWor2atoS6Q6bEJpOqxmHoSQ/fh+wJz7lfoA0qZkG/z3qjFnuIptT++36M5KsgkRhxnyCuzb45Vjoxii+hbNUvMMLmgVza3LEe5TByXnuczsWdFrXkZzf1lIHxaX0P3d3o7s81xAqRlh6ErIUOhF8SGjH1IFRhScl1PLUAiFA6CwlRfn/s0ViAqGvR9Q4F4cESKkVu/I7tHsJp+mlskFe4bBkOPoVoJz5OUkn07Qe+R+7eVaRbKbASzU5wgpTgHdFQMoaC4aFcHDKen2IsIgvIsLCA9tx8gyBTZOyqcBB7lktngz1UCIUIqKuIy5kbMTObsj3Kh8VlRYeyAd9B5ct3TqWoZXHQ4XW1jJKzzAREHx8tap3BnELQYjGvAMnQ3nTfGFlK4tlorJLMkjThYO/dCBjozbaUHTxqPP4O+9DUUARXAMnalczXOee5l7FRiPEZ3gCN2PuWxMHMMY25z31c97emyUKhnhxPbniWjK3lpJC3ty547g9Pn8Kn6XKo4MbtcekfFfiOe00DXC+d5YO4/gz6Otyp5N+e2Mo3m8d7nTeKYdUHxfI9jNwX6wB/pdXuZ6RX08yGCEx2W7UDvhAgHevkSuv1ufxwwDPPr9LS9TGHYNiNfQldTnA8hfAP6YoezKtrZegzvWI9azW3sA0667X8QugHna+dGA21RWnEawOBeQqcvDhFDa6fDc6CzxJ31/Kvuk+A241BljfM39Ivnxmo6zDry7fwSuiMSqHHCS6tjH+3sX8z8XagQ/KmFfRI66dIW+gxw6DeTt5cXFWgtxdfQSacGOR/MNFZQr3e9CEVnbQs9SqJGSn6n+WkuGbgE2oVwXfhZivCX0OOdQkJ92qXY9ALTj/sImX8iVMILS/44dpeKrzLn4ON4b6C/Refzk9+97+iM878P/rxe5nZh87f0fuibvtQGfQVt0FfQBn0FbdD/u4C/igxYDPxDvSwAAAAASUVORK5CYII=" SearchSteps="FuzzySelector, Image" Text="Phone Number" TextMethod="AttributeText" TextSelector="&lt;webctrl tag='LABEL' type='' /&gt;" />
+                                </scg:List>
+                              </uix:TargetAnchorable.Anchors>
+                            </uix:TargetAnchorable>
+                          </uix:NTypeInto.Target>
+                        </uix:NTypeInto>
+                        <uix:NTypeInto ActivateBefore="True" ClickBeforeMode="None" DisplayName="Type Into 'Company Name'" EmptyFieldMode="SingleLine" sap:VirtualizedContainerService.HintSize="334,226" sap2010:WorkflowViewState.IdRef="NTypeInto_4" Text="[row(3).ToString]">
+                          <uix:NTypeInto.Target>
+                            <uix:TargetAnchorable BrowserURL="https://www.rpachallenge.com/" DesignTimeRectangle="452, 473, 255, 46" ElementType="InputBox" FriendlyName="'INPUT  6iaJ1'" FullSelectorArgument="&lt;webctrl id='6iaJ1' tag='INPUT' /&gt;" FuzzySelectorArgument="&lt;webctrl id='6iaJ1' tag='INPUT' type='' aaname='' /&gt;" ImageBase64="iVBORw0KGgoAAAANSUhEUgAAAQMAAAAyCAYAAABYgL53AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAACoSURBVHhe7dYBCcBAEAPB+hdxVq/PQt9EZyAWljwLcIgBEDEAIgZAxACIGAARAyBiAEQMgIgBEDEAIgZAxACIGAARAyBiAEQMgIgBEDEAIgZAxACIGAARAyBiAEQMgIgBEDEAIgZAxACIGAARAyBiAEQMgIgBEDEAIgZAxACIGAARAyBiAEQMgIgBEDEAIgZAxACIGAARAyA3BjNjZj/cxzMAIgbAsfsC04t3hNp3NvwAAAAASUVORK5CYII=" InformativeScreenshot="c1ce7dce6fdd0904e34d093e86d5cc5d.png" ScopeSelectorArgument="&lt;html app='chrome.exe' title='Rpa Challenge' /&gt;" SearchSteps="FuzzySelector, Image">
+                              <uix:TargetAnchorable.Anchors>
+                                <scg:List x:TypeArguments="uix:ITarget" Capacity="1">
+                                  <uix:Target DesignTimeRectangle="452, 453, 100, 17" ElementType="Text" FriendlyName="'Company Name'" FullSelectorArgument="&lt;webctrl aaname='Company Name' tag='LABEL' /&gt;" FuzzySelectorArgument="&lt;webctrl aaname='Company Name' tag='LABEL' type='' check:text='Company Name' /&gt;" ImageBase64="iVBORw0KGgoAAAANSUhEUgAAAGgAAAAVCAYAAACqoKu+AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAQ/SURBVGhD7Zd/p/tKEMbv+38RYQkhhLKEUEIIh/0rlBBCCaGEEELoH8+d2d00m/44Pe09bnu/tx9SSba7mZlnZrL5Cx/emo9Ab85HoDfnI9Cb8xHozfkI9OZcFeg4NKjKEiUd+8Nk7/7ZTIca1WG0V5bpgLpsMNjLV3Am0IAy8eH5EeJMQWUxNoEHf6NwsP/4U+nyEJ4XQfX2BtPlCL0Ylb18BSuB2EgRl2cZM6CQJNJ2b6+pwroKeZogSRKkeYXuaAeItkhQND3KLEEcxzReQ/vc1zRHQsoEWdlhnjJUGbKqx7BXSGm9JMlQtGc5e+z0eqfn9RWypEDLYwOdZxVanh/T+nEKtbfzuxJpukNnrgzTHl9bhcaxmWHf/ZCOSBl7mXOBvrODfgs6b/qS7sXke4q8Niv1dY5Ukm3kW+kGi1j8XsdlxhFoj60Ika+8ucI+he8FSIoG3WEPlQRUcQlq2wmr2NOZuK0OGA7kwMaHT6LIiIXr0DUK0vcQ2VQ1gYkQxl/UTjs0ZYYNjW8KG6apRkLXQaLMOCVA6PsQc+B0ECmBJAW9M+OB58PkE/sksK353NCrCMK9YWE7wrzBjpJR7myrcwW6Zwf9xmSHF22pVQ44UOJtaFwmEhELx7YpSbFbqrT7oqoNTFxOsUpquC+VRaAflfMAFTkOaEbtVKRM1rJAc/A1g0JEActMmhnKmBxRulJ1a3Gzlqm3EGJL4eXpETy5o6csTDtJSeAIRP91Q95mFDhb8W1GCRTPXnXIw2Bti8UIRNk57iA9Ce2iE5O7dmiB1i1Sz/EzW2GGUseHPSfBz1vqvIbTQBaBdCBjlPbyOrzAZZXpINsgsECneGiuzGHHw1y3nlNgViyG8noX424yOWvNuPZQyZBfFHBOyzZDcJ4MFteOkQPPYjjPuWuHtnk+t1SUiFds0+vouR4EVZnvHILuURGdcFocZ5eg4F7u2kYqv3LP/bFFRoucZyBnrG9vPiPQRcvRQTXOumufoED7PxWIGoap8J4KU6yr28EVaO4KMktPAty1Q/v5gECTqdSiHzAM7jHeaHHMfksqbpDPL1liapXupXFliptbhpDFaWNwbDkTFgGeEYjfWXl72jZQG6BMokW0oZz1PH8epxd1IcW6xX0rEMEtM6KXtG8r6QprgQjd6vh9ap9zzw7t5wMC2cQJ83bZMFHrF75p7TNrgYixySEDfrCAL8jAYIO0dLNuQJ1yUO04bSzSehH0qRaXlVD0ghTClDhv6096Ef0upuCYdiD4eWrJbHetmQuBuPLpc+Ha5mDmQiCCNxSLAHfs0H4+IhAxNsjJb4/89n0BEUios++ZC4F+zhHTjWx8hJXBx2lV3udMk6PaQ9S0m7u+OXiG5+24Bfl9Y8l/INDvcC1zfxu927qxOXh3/gcC9fbT4BfK/QW8XCBMI8b/Zuz+FV4v0Idv+Qj01gB/AzDY1JvN+2mdAAAAAElFTkSuQmCC" SearchSteps="FuzzySelector, Image" Text="Company Name" TextMethod="AttributeText" TextSelector="&lt;webctrl tag='LABEL' type='' /&gt;" />
+                                </scg:List>
+                              </uix:TargetAnchorable.Anchors>
+                            </uix:TargetAnchorable>
+                          </uix:NTypeInto.Target>
+                        </uix:NTypeInto>
+                        <uix:NClick ClickType="Single" DisplayName="Click 'Submit'" sap:VirtualizedContainerService.HintSize="334,166" sap2010:WorkflowViewState.IdRef="NClick_1" KeyModifiers="None" MouseButton="Left">
+                          <uix:NClick.Target>
+                            <uix:TargetAnchorable BrowserURL="https://www.rpachallenge.com/" DesignTimeRectangle="441, 627, 116, 36" ElementType="Button" FriendlyName="'Submit'" FullSelectorArgument="&lt;webctrl tag='INPUT' type='submit' /&gt;" FuzzySelectorArgument="&lt;webctrl tag='INPUT' type='submit' aaname='Submit' check:text='Submit' /&gt;" ImageBase64="iVBORw0KGgoAAAANSUhEUgAAAHgAAAAoCAYAAAA16j4lAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAPhSURBVHhe7Zw/a9tAGIf1TUqHzvkIHTu2W8dCqaFbxw6ePHUxFE9ZDIUQ46VQyOIptHhpFmOIE+LJIXgIToJCiIntxLm3v5+kU06K2hLsNpZ4BQ/Wnd67C/fo/shY8YwxQm5vb2U+nwfc3NzEXF9fKyuM68r6o0vr1bNirczZbCbT6VQmk4mSI+iM7qx0K9rjSZD5oyHz98/EvPKUHEOHdEmndOvRNu8AlVsc6JJO6daj6cvLy8xAJb/QKd16nLt9388MUvILndKtx6F8enqaGaTkFzqlW+/q6kpOTk4yg5T8Qqd0q4ILSkLwaDTKDFLyC52q4AKjgguOCi44KrjgrJ7g9XUx/QMxQ9DBeflJ8nodea0PybyAN2LaTTE1m36OOKSZF/MF19ecMqD2Cflsx8lLU/kYlk/XXccn02X8PYl2XFC/W9d/ZrUE7xyLERHjR4JnSAjy6o7k3rnI+HuyXADksey2TaPTx8gYH4Z1kfGEFaIO5wbZPgjz+pAY1+WCtvtRuVTdcT1VtG3b8Bk7uUsPv0VlHocVEvw5FOR2fgl3PyWPMBJs3gMFJ+ojO4eIwk1TjdKRYJEu2nPiLGW0HUX8tW4S1Aex6fxHYoUER4LaqSk5zaKC6ygr5/iM0oEQjDjcSGbnRTKWdI5xPTxU8EKEnSZjdI5d27JYRHDptZgBplC3vBVCkbOfd/lBPGYViu8jXwUvgSo2O9E6KRxlQ4hIy37oGpw+xpDlbqiskBLaxplpOTNIG9M5pQejXgUvj/JLdHQr2rCgIztORz50BPcxCqsYuWQDMayT5e166wrhZspHu0F57Mp9to1PFfyvwGgaoL/cqXPRNbhk46KR6gqpYMfL9XgD561umM/RroKXQA2dO0PntjOmZO5wbZrTpuDRJ/3cuoUYd/P0WwmR4A5GNNMJIdENNcDOeYQY++ikgpdBOCXKDPKCdXcNI4nS0ZEDTLM2zm58fHT6OqbyMna+XzGtMm8IeXF9kQR3iq5C2JA3DB6T7JcWaSEb4YYqEaOCl0QFMkZ2kxUeZojRlH4+5WYsWp/tcT8ulJA+DHfpW87j0D0huIbRK+7NooKXDabKyh8elWIwyiuprx6VBCsqWFkWKrjgqOCCo4ILjgouOCq44KjggpMQrD98Lx76ZkPBiQXry2fFJH75jK8Ynp2dyfTd08xAJX/QZeCUr4/y/zrwXdLjrzW5euv8qkHJJXRIl3RKt8Eb/hcXF3J0dCTdbleazaY0Gg3Z3NxUcgSd0R0d0iWdBm/48x91cDHmnM0L+/v7sre3J71eL2B3d1dZYawnOqM7OqRLOp3P5/ILEgz72hLASLsAAAAASUVORK5CYII=" InformativeScreenshot="640f8efcb0b4b7635acc51da2b9addaf.png" ScopeSelectorArgument="&lt;html app='chrome.exe' title='Rpa Challenge' /&gt;" SearchSteps="FuzzySelector, Image" Text="Submit" TextMethod="AttributeText" TextSelector="&lt;webctrl tag='INPUT' type='submit' /&gt;">
+                              <uix:TargetAnchorable.Anchors>
+                                <scg:List x:TypeArguments="uix:ITarget" Capacity="1">
+                                  <uix:Target DesignTimeRectangle="8, 160, 249, 64" ElementType="Text" FriendlyName="'RPA Challenge'" FullSelectorArgument="&lt;webctrl aaname='RPA Challenge' tag='A' /&gt;" FuzzySelectorArgument="&lt;webctrl aaname='RPA Challenge' tag='A' type='' check:text='RPA Challenge' /&gt;" ImageBase64="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" SearchSteps="FuzzySelector, Image" Text="RPA Challenge" TextMethod="AttributeText" TextSelector="&lt;webctrl tag='A' type='' /&gt;" />
+                                </scg:List>
+                              </uix:TargetAnchorable.Anchors>
+                            </uix:TargetAnchorable>
+                          </uix:NClick.Target>
+                        </uix:NClick>
+                      </Sequence>
+                    </ActivityAction>
+                  </ui:ForEachRow.Body>
+                </ui:ForEachRow>
+              </Sequence>
+            </ActivityAction>
+          </uix:NApplicationCard.Body>
+          <uix:NApplicationCard.TargetApp>
+            <uix:TargetApp BrowserType="Chrome" IconBase64="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" InformativeScreenshot="1af25db73e8d7fad756304d961aaa6f8.png" Selector="&lt;html app='chrome.exe' title='Rpa Challenge'/&gt;" Url="https://www.rpachallenge.com/" />
+          </uix:NApplicationCard.TargetApp>
+        </uix:NApplicationCard>
+      </Sequence>
+    </Sequence>
+    <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="436,385" sap2010:WorkflowViewState.IdRef="CommentOut_6">
+      <ui:CommentOut.Body>
+        <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="284,307" sap2010:WorkflowViewState.IdRef="Sequence_43">
+          <sap:WorkflowViewStateService.ViewState>
+            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+            </scg:Dictionary>
+          </sap:WorkflowViewStateService.ViewState>
+          <Sequence sap2010:Annotation.AnnotationText="&#xD;&#xA;Gives error while picking name while doing second time.&#xD;&#xA;" DisplayName="Sequence - Get input from Fake Name Generator" sap:VirtualizedContainerService.HintSize="242,215" sap2010:WorkflowViewState.IdRef="Sequence_15">
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+            <ui:OpenBrowser CommunicationMethod="{x:Null}" UiBrowser="{x:Null}" BrowserType="Chrome" DisplayName="Open Browser" Hidden="False" sap:VirtualizedContainerService.HintSize="200,51" sap2010:WorkflowViewState.IdRef="OpenBrowser_1" NewSession="True" Private="False" Url="https://www.fakenamegenerator.com/gen-random-us-us.php">
+              <ui:OpenBrowser.Body>
+                <ActivityAction x:TypeArguments="x:Object">
+                  <ActivityAction.Argument>
+                    <DelegateInArgument x:TypeArguments="x:Object" Name="ContextTarget" />
+                  </ActivityAction.Argument>
+                  <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="526,3310" sap2010:WorkflowViewState.IdRef="Sequence_1">
                     <sap:WorkflowViewStateService.ViewState>
                       <scg:Dictionary x:TypeArguments="x:String, x:Object">
                         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                         <x:Boolean x:Key="IsPinned">False</x:Boolean>
                       </scg:Dictionary>
                     </sap:WorkflowViewStateService.ViewState>
-                  </ui:GetFullText>
-                  <Assign sap:VirtualizedContainerService.HintSize="384,60" sap2010:WorkflowViewState.IdRef="Assign_1">
-                    <Assign.To>
-                      <OutArgument x:TypeArguments="s:String[]">[NameArray]</OutArgument>
-                    </Assign.To>
-                    <Assign.Value>
-                      <InArgument x:TypeArguments="s:String[]">[FullName.Split(" "c)]</InArgument>
-                    </Assign.Value>
-                  </Assign>
-                  <ui:GetFullText IgnoreHidden="{x:Null}" DisplayName="Get Full Text 'DD'" sap:VirtualizedContainerService.HintSize="384,106" sap2010:WorkflowViewState.IdRef="GetFullText_7">
-                    <ui:GetFullText.Target>
-                      <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="b43fab26-2307-4aff-9262-71cae6929dcc" InformativeScreenshot="202a000ec341c696a8e4f1321273c75c" Selector="&lt;webctrl css-selector='body&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;dl' parentid='details' tag='DL' idx='4' /&gt;&lt;webctrl isleaf='1' tag='DD' parentid='details' /&gt;">
-                        <ui:Target.TimeoutMS>
-                          <InArgument x:TypeArguments="x:Int32" />
-                        </ui:Target.TimeoutMS>
-                        <ui:Target.WaitForReady>
-                          <InArgument x:TypeArguments="ui:WaitForReady" />
-                        </ui:Target.WaitForReady>
-                      </ui:Target>
-                    </ui:GetFullText.Target>
-                    <ui:GetFullText.Text>
-                      <OutArgument x:TypeArguments="x:String">[PhoneNumber]</OutArgument>
-                    </ui:GetFullText.Text>
-                  </ui:GetFullText>
-                  <ui:GetFullText DisplayName="Get Full Text 'DD'" sap:VirtualizedContainerService.HintSize="384,106" sap2010:WorkflowViewState.IdRef="GetFullText_6" IgnoreHidden="False">
-                    <ui:GetFullText.Target>
-                      <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="065e6717-9890-436c-ba26-e9c2a976e154" InformativeScreenshot="1b7eb1cbf1bd7006c7ca18ed21faa9b6" Selector="&lt;webctrl css-selector='body&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div' parentid='details' tag='DIV' idx='4' /&gt;&lt;webctrl css-selector='body&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;dl' parentid='details' tag='DL' idx='17' /&gt;&lt;webctrl isleaf='1' tag='DD' /&gt;" WaitForReady="COMPLETE">
-                        <ui:Target.TimeoutMS>
-                          <InArgument x:TypeArguments="x:Int32" />
-                        </ui:Target.TimeoutMS>
-                      </ui:Target>
-                    </ui:GetFullText.Target>
-                    <ui:GetFullText.Text>
-                      <OutArgument x:TypeArguments="x:String">[CompanyName]</OutArgument>
-                    </ui:GetFullText.Text>
-                  </ui:GetFullText>
-                  <ui:Click DelayMS="{x:Null}" AlterIfDisabled="True" ClickType="CLICK_SINGLE" DelayBefore="2000" DisplayName="Click 'INPUT  genbtn'" sap:VirtualizedContainerService.HintSize="384,106" sap2010:WorkflowViewState.IdRef="Click_1" KeyModifiers="None" MouseButton="BTN_LEFT" SendWindowMessages="False" SimulateClick="False">
-                    <ui:Click.CursorPosition>
-                      <ui:CursorPosition Position="Center">
-                        <ui:CursorPosition.OffsetX>
-                          <InArgument x:TypeArguments="x:Int32" />
-                        </ui:CursorPosition.OffsetX>
-                        <ui:CursorPosition.OffsetY>
-                          <InArgument x:TypeArguments="x:Int32" />
-                        </ui:CursorPosition.OffsetY>
-                      </ui:CursorPosition>
-                    </ui:Click.CursorPosition>
-                    <ui:Click.Target>
-                      <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="209a7594-c64b-430d-a428-0cae2208feb0" InformativeScreenshot="15e52773ece6c64916f6b00e29eb31d7" Selector="&lt;webctrl tag='INPUT' type='submit' /&gt;" WaitForReady="INTERACTIVE">
-                        <ui:Target.TimeoutMS>
-                          <InArgument x:TypeArguments="x:Int32" />
-                        </ui:Target.TimeoutMS>
-                      </ui:Target>
-                    </ui:Click.Target>
-                  </ui:Click>
-                  <ui:NavigateTo Browser="{x:Null}" DisplayName="Navigate To" sap:VirtualizedContainerService.HintSize="384,59" sap2010:WorkflowViewState.IdRef="NavigateTo_2" Url="http://rpachallenge.com" />
-                  <ui:MultipleAssign DisplayName="Multiple Assign" sap:VirtualizedContainerService.HintSize="384,129" sap2010:WorkflowViewState.IdRef="MultipleAssign_1">
-                    <ui:MultipleAssign.AssignOperations>
-                      <scg:List x:TypeArguments="ui:AssignOperation" Capacity="4">
-                        <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_1">
-                          <ui:AssignOperation.To>
-                            <OutArgument x:TypeArguments="x:String">[FName]</OutArgument>
-                          </ui:AssignOperation.To>
-                          <ui:AssignOperation.Value>
-                            <InArgument x:TypeArguments="x:String">[NameArray(0)]</InArgument>
-                          </ui:AssignOperation.Value>
-                        </ui:AssignOperation>
-                        <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_2">
-                          <ui:AssignOperation.To>
-                            <OutArgument x:TypeArguments="x:String">[LName]</OutArgument>
-                          </ui:AssignOperation.To>
-                          <ui:AssignOperation.Value>
-                            <InArgument x:TypeArguments="x:String">[NameArray(2)]</InArgument>
-                          </ui:AssignOperation.Value>
-                        </ui:AssignOperation>
-                      </scg:List>
-                    </ui:MultipleAssign.AssignOperations>
-                  </ui:MultipleAssign>
-                  <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="384,91" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Info" Message="[FName + &quot; &quot;+ LName+ &quot; &quot;+ CompanyName+ &quot; &quot;+ PhoneNumber]" />
-                  <ui:AnchorBase AnchorPosition="Top" DisplayName="Anchor Base" sap:VirtualizedContainerService.HintSize="384,380" sap2010:WorkflowViewState.IdRef="AnchorBase_1">
-                    <ui:AnchorBase.Action>
-                      <ActivityAction x:TypeArguments="ui:Anchor">
-                        <ActivityAction.Argument>
-                          <DelegateInArgument x:TypeArguments="ui:Anchor" Name="ContextAnchor" />
-                        </ActivityAction.Argument>
-                        <ui:TypeInto DelayBetweenKeys="{x:Null}" Activate="True" AlterIfDisabled="True" ClickBeforeTyping="False" DelayBefore="100" DelayMS="100" DisplayName="Type Into 'INPUT  4VTmp'" EmptyField="False" sap:VirtualizedContainerService.HintSize="334,134" sap2010:WorkflowViewState.IdRef="TypeInto_21" SendWindowMessages="False" SimulateType="False" Text="[FName]">
-                          <ui:TypeInto.Target>
-                            <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="b126dbb6-c3e8-437c-a975-93921169f80f" InformativeScreenshot="900f337da66b0399c5b0042e86d6a7fa" Selector="&lt;webctrl tag='INPUT' /&gt;" WaitForReady="INTERACTIVE">
+                    <While DisplayName="While" sap:VirtualizedContainerService.HintSize="484,3218" sap2010:WorkflowViewState.IdRef="While_2">
+                      <sap:WorkflowViewStateService.ViewState>
+                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                        </scg:Dictionary>
+                      </sap:WorkflowViewStateService.ViewState>
+                      <While.Condition>[IterationCounter &lt; UserIterationsRequest]</While.Condition>
+                      <Sequence DisplayName="Do While Sequence" sap:VirtualizedContainerService.HintSize="426,3061" sap2010:WorkflowViewState.IdRef="Sequence_27">
+                        <sap:WorkflowViewStateService.ViewState>
+                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                          </scg:Dictionary>
+                        </sap:WorkflowViewStateService.ViewState>
+                        <ui:GetFullText DisplayName="Get Full Text 'H3'" sap:VirtualizedContainerService.HintSize="384,106" sap2010:WorkflowViewState.IdRef="GetFullText_4" IgnoreHidden="False">
+                          <ui:GetFullText.Target>
+                            <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="746410f3-7314-45ee-a222-f6caf3eff5b1" InformativeScreenshot="f08db34a40ff5cb79e64a579a6cbb14d" Selector="&lt;webctrl tag='DIV' id='body' /&gt;&lt;webctrl tag='DIV' class='content' /&gt;&lt;webctrl tag='DIV' id='details' /&gt;&lt;webctrl tag='DIV' class='content' /&gt;&lt;webctrl tag='DIV' class='info' /&gt;&lt;webctrl tag='DIV' class='content' /&gt;&lt;webctrl tag='DIV' class='address' /&gt;&lt;webctrl tag='H3' /&gt;" WaitForReady="COMPLETE">
                               <ui:Target.TimeoutMS>
                                 <InArgument x:TypeArguments="x:Int32" />
                               </ui:Target.TimeoutMS>
                             </ui:Target>
-                          </ui:TypeInto.Target>
-                        </ui:TypeInto>
-                      </ActivityAction>
-                    </ui:AnchorBase.Action>
-                    <ui:AnchorBase.AnchorProvider>
-                      <ui:WaitUiElementAppear FoundElement="{x:Null}" WaitActive="{x:Null}" WaitVisible="{x:Null}" DisplayName="Find Element 'LABEL'" sap:VirtualizedContainerService.HintSize="334,106" sap2010:WorkflowViewState.IdRef="WaitUiElementAppear_1">
-                        <ui:WaitUiElementAppear.Target>
-                          <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="25f33864-c90c-46ef-89ab-1c939881b4f4" InformativeScreenshot="4d19aa61c9a042ada4fe6dc5d12848da" Selector="&lt;webctrl aaname='First Name' tag='LABEL' /&gt;">
-                            <ui:Target.TimeoutMS>
-                              <InArgument x:TypeArguments="x:Int32" />
-                            </ui:Target.TimeoutMS>
-                            <ui:Target.WaitForReady>
-                              <InArgument x:TypeArguments="ui:WaitForReady" />
-                            </ui:Target.WaitForReady>
-                          </ui:Target>
-                        </ui:WaitUiElementAppear.Target>
-                      </ui:WaitUiElementAppear>
-                    </ui:AnchorBase.AnchorProvider>
-                  </ui:AnchorBase>
-                  <ui:AnchorBase AnchorPosition="Top" DisplayName="Anchor Base" sap:VirtualizedContainerService.HintSize="384,380" sap2010:WorkflowViewState.IdRef="AnchorBase_2">
-                    <ui:AnchorBase.Action>
-                      <ActivityAction x:TypeArguments="ui:Anchor">
-                        <ActivityAction.Argument>
-                          <DelegateInArgument x:TypeArguments="ui:Anchor" Name="ContextAnchor" />
-                        </ActivityAction.Argument>
-                        <ui:TypeInto DelayBetweenKeys="{x:Null}" Activate="True" AlterIfDisabled="True" ClickBeforeTyping="False" DelayBefore="100" DelayMS="100" DisplayName="Type Into 'INPUT  yVU3u'" EmptyField="False" sap:VirtualizedContainerService.HintSize="334,134" sap2010:WorkflowViewState.IdRef="TypeInto_22" SendWindowMessages="False" SimulateType="False" Text="[LName]">
-                          <ui:TypeInto.Target>
-                            <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="7773acf8-3ebc-47b3-8e52-4f69972959f2" InformativeScreenshot="68bd0d802d7659bd7384ed73b13de204" Selector="&lt;webctrl tag='INPUT' /&gt;" WaitForReady="INTERACTIVE">
+                          </ui:GetFullText.Target>
+                          <ui:GetFullText.Text>
+                            <OutArgument x:TypeArguments="x:String">[FullName]</OutArgument>
+                          </ui:GetFullText.Text>
+                          <sap:WorkflowViewStateService.ViewState>
+                            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                              <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                            </scg:Dictionary>
+                          </sap:WorkflowViewStateService.ViewState>
+                        </ui:GetFullText>
+                        <Assign sap:VirtualizedContainerService.HintSize="384,60" sap2010:WorkflowViewState.IdRef="Assign_1">
+                          <Assign.To>
+                            <OutArgument x:TypeArguments="s:String[]">[NameArray]</OutArgument>
+                          </Assign.To>
+                          <Assign.Value>
+                            <InArgument x:TypeArguments="s:String[]">[FullName.Split(" "c)]</InArgument>
+                          </Assign.Value>
+                        </Assign>
+                        <ui:GetFullText IgnoreHidden="{x:Null}" DisplayName="Get Full Text 'DD'" sap:VirtualizedContainerService.HintSize="384,106" sap2010:WorkflowViewState.IdRef="GetFullText_7">
+                          <ui:GetFullText.Target>
+                            <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="b43fab26-2307-4aff-9262-71cae6929dcc" InformativeScreenshot="202a000ec341c696a8e4f1321273c75c" Selector="&lt;webctrl css-selector='body&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;dl' parentid='details' tag='DL' idx='4' /&gt;&lt;webctrl isleaf='1' tag='DD' parentid='details' /&gt;">
+                              <ui:Target.TimeoutMS>
+                                <InArgument x:TypeArguments="x:Int32" />
+                              </ui:Target.TimeoutMS>
+                              <ui:Target.WaitForReady>
+                                <InArgument x:TypeArguments="ui:WaitForReady" />
+                              </ui:Target.WaitForReady>
+                            </ui:Target>
+                          </ui:GetFullText.Target>
+                          <ui:GetFullText.Text>
+                            <OutArgument x:TypeArguments="x:String">[PhoneNumber]</OutArgument>
+                          </ui:GetFullText.Text>
+                        </ui:GetFullText>
+                        <ui:GetFullText DisplayName="Get Full Text 'DD'" sap:VirtualizedContainerService.HintSize="384,106" sap2010:WorkflowViewState.IdRef="GetFullText_6" IgnoreHidden="False">
+                          <ui:GetFullText.Target>
+                            <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="065e6717-9890-436c-ba26-e9c2a976e154" InformativeScreenshot="1b7eb1cbf1bd7006c7ca18ed21faa9b6" Selector="&lt;webctrl css-selector='body&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div' parentid='details' tag='DIV' idx='4' /&gt;&lt;webctrl css-selector='body&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;dl' parentid='details' tag='DL' idx='17' /&gt;&lt;webctrl isleaf='1' tag='DD' /&gt;" WaitForReady="COMPLETE">
                               <ui:Target.TimeoutMS>
                                 <InArgument x:TypeArguments="x:Int32" />
                               </ui:Target.TimeoutMS>
                             </ui:Target>
-                          </ui:TypeInto.Target>
-                        </ui:TypeInto>
-                      </ActivityAction>
-                    </ui:AnchorBase.Action>
-                    <ui:AnchorBase.AnchorProvider>
-                      <ui:WaitUiElementAppear FoundElement="{x:Null}" WaitActive="{x:Null}" WaitVisible="{x:Null}" DisplayName="Find Element 'LABEL'" sap:VirtualizedContainerService.HintSize="334,106" sap2010:WorkflowViewState.IdRef="WaitUiElementAppear_2">
-                        <ui:WaitUiElementAppear.Target>
-                          <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="235a73bb-8c1c-49e4-a55c-c0d21a9d4aa8" InformativeScreenshot="9d84cd0cac7bb5b27517d1f378d2e5af" Selector="&lt;webctrl aaname='Last Name' tag='LABEL' /&gt;">
-                            <ui:Target.TimeoutMS>
-                              <InArgument x:TypeArguments="x:Int32" />
-                            </ui:Target.TimeoutMS>
-                            <ui:Target.WaitForReady>
-                              <InArgument x:TypeArguments="ui:WaitForReady" />
-                            </ui:Target.WaitForReady>
-                          </ui:Target>
-                        </ui:WaitUiElementAppear.Target>
-                      </ui:WaitUiElementAppear>
-                    </ui:AnchorBase.AnchorProvider>
-                  </ui:AnchorBase>
-                  <ui:AnchorBase AnchorPosition="Top" DisplayName="Anchor Base" sap:VirtualizedContainerService.HintSize="384,380" sap2010:WorkflowViewState.IdRef="AnchorBase_3">
-                    <ui:AnchorBase.Action>
-                      <ActivityAction x:TypeArguments="ui:Anchor">
-                        <ActivityAction.Argument>
-                          <DelegateInArgument x:TypeArguments="ui:Anchor" Name="ContextAnchor" />
-                        </ActivityAction.Argument>
-                        <ui:TypeInto DelayBetweenKeys="{x:Null}" Activate="True" AlterIfDisabled="True" ClickBeforeTyping="False" DelayBefore="100" DelayMS="100" DisplayName="Type Into 'INPUT  Iq07t'" EmptyField="False" sap:VirtualizedContainerService.HintSize="334,134" sap2010:WorkflowViewState.IdRef="TypeInto_23" SendWindowMessages="False" SimulateType="False" Text="[CompanyName]">
-                          <ui:TypeInto.Target>
-                            <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="4594ead3-dba5-445c-bee7-8e22885e810e" InformativeScreenshot="73e145f8130793f054a8689a4c9ee08a" Selector="&lt;webctrl tag='INPUT' /&gt;" WaitForReady="INTERACTIVE">
+                          </ui:GetFullText.Target>
+                          <ui:GetFullText.Text>
+                            <OutArgument x:TypeArguments="x:String">[CompanyName]</OutArgument>
+                          </ui:GetFullText.Text>
+                        </ui:GetFullText>
+                        <ui:Click DelayMS="{x:Null}" AlterIfDisabled="True" ClickType="CLICK_SINGLE" DelayBefore="2000" DisplayName="Click 'INPUT  genbtn'" sap:VirtualizedContainerService.HintSize="384,106" sap2010:WorkflowViewState.IdRef="Click_1" KeyModifiers="None" MouseButton="BTN_LEFT" SendWindowMessages="False" SimulateClick="False">
+                          <ui:Click.CursorPosition>
+                            <ui:CursorPosition Position="Center">
+                              <ui:CursorPosition.OffsetX>
+                                <InArgument x:TypeArguments="x:Int32" />
+                              </ui:CursorPosition.OffsetX>
+                              <ui:CursorPosition.OffsetY>
+                                <InArgument x:TypeArguments="x:Int32" />
+                              </ui:CursorPosition.OffsetY>
+                            </ui:CursorPosition>
+                          </ui:Click.CursorPosition>
+                          <ui:Click.Target>
+                            <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="209a7594-c64b-430d-a428-0cae2208feb0" InformativeScreenshot="15e52773ece6c64916f6b00e29eb31d7" Selector="&lt;webctrl tag='INPUT' type='submit' /&gt;" WaitForReady="INTERACTIVE">
                               <ui:Target.TimeoutMS>
                                 <InArgument x:TypeArguments="x:Int32" />
                               </ui:Target.TimeoutMS>
                             </ui:Target>
-                          </ui:TypeInto.Target>
-                        </ui:TypeInto>
-                      </ActivityAction>
-                    </ui:AnchorBase.Action>
-                    <ui:AnchorBase.AnchorProvider>
-                      <ui:WaitUiElementAppear FoundElement="{x:Null}" WaitActive="{x:Null}" WaitVisible="{x:Null}" DisplayName="Find Element 'LABEL'" sap:VirtualizedContainerService.HintSize="334,106" sap2010:WorkflowViewState.IdRef="WaitUiElementAppear_3">
-                        <ui:WaitUiElementAppear.Target>
-                          <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="14555c92-2bc4-467a-927e-40fb03099b7c" InformativeScreenshot="b25ade04dede9bc53ae298a2a69a0a3c" Selector="&lt;webctrl aaname='Company Name' tag='LABEL' /&gt;">
-                            <ui:Target.TimeoutMS>
-                              <InArgument x:TypeArguments="x:Int32" />
-                            </ui:Target.TimeoutMS>
-                            <ui:Target.WaitForReady>
-                              <InArgument x:TypeArguments="ui:WaitForReady" />
-                            </ui:Target.WaitForReady>
-                          </ui:Target>
-                        </ui:WaitUiElementAppear.Target>
-                      </ui:WaitUiElementAppear>
-                    </ui:AnchorBase.AnchorProvider>
-                  </ui:AnchorBase>
-                  <ui:AnchorBase AnchorPosition="Top" DisplayName="Anchor Base" sap:VirtualizedContainerService.HintSize="384,380" sap2010:WorkflowViewState.IdRef="AnchorBase_4">
-                    <ui:AnchorBase.Action>
-                      <ActivityAction x:TypeArguments="ui:Anchor">
-                        <ActivityAction.Argument>
-                          <DelegateInArgument x:TypeArguments="ui:Anchor" Name="ContextAnchor" />
-                        </ActivityAction.Argument>
-                        <ui:TypeInto DelayBetweenKeys="{x:Null}" Activate="True" AlterIfDisabled="True" ClickBeforeTyping="False" DelayBefore="100" DelayMS="100" DisplayName="Type Into 'INPUT  76Juc'" EmptyField="False" sap:VirtualizedContainerService.HintSize="334,134" sap2010:WorkflowViewState.IdRef="TypeInto_24" SendWindowMessages="False" SimulateType="False" Text="[PhoneNumber]">
-                          <ui:TypeInto.Target>
-                            <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="6f541569-e59d-4e00-ae4d-bfa5f3846bc7" InformativeScreenshot="d442f2f07e1e3d9c00cdeb9c8817da6c" Selector="&lt;webctrl tag='INPUT' /&gt;" WaitForReady="INTERACTIVE">
+                          </ui:Click.Target>
+                        </ui:Click>
+                        <ui:NavigateTo Browser="{x:Null}" DisplayName="Navigate To" sap:VirtualizedContainerService.HintSize="384,59" sap2010:WorkflowViewState.IdRef="NavigateTo_2" Url="http://rpachallenge.com" />
+                        <ui:MultipleAssign DisplayName="Multiple Assign" sap:VirtualizedContainerService.HintSize="384,129" sap2010:WorkflowViewState.IdRef="MultipleAssign_1">
+                          <ui:MultipleAssign.AssignOperations>
+                            <scg:List x:TypeArguments="ui:AssignOperation" Capacity="4">
+                              <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_1">
+                                <ui:AssignOperation.To>
+                                  <OutArgument x:TypeArguments="x:String">[FName]</OutArgument>
+                                </ui:AssignOperation.To>
+                                <ui:AssignOperation.Value>
+                                  <InArgument x:TypeArguments="x:String">[NameArray(0)]</InArgument>
+                                </ui:AssignOperation.Value>
+                              </ui:AssignOperation>
+                              <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_2">
+                                <ui:AssignOperation.To>
+                                  <OutArgument x:TypeArguments="x:String">[LName]</OutArgument>
+                                </ui:AssignOperation.To>
+                                <ui:AssignOperation.Value>
+                                  <InArgument x:TypeArguments="x:String">[NameArray(2)]</InArgument>
+                                </ui:AssignOperation.Value>
+                              </ui:AssignOperation>
+                            </scg:List>
+                          </ui:MultipleAssign.AssignOperations>
+                        </ui:MultipleAssign>
+                        <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="384,91" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Info" Message="[FName + &quot; &quot;+ LName+ &quot; &quot;+ CompanyName+ &quot; &quot;+ PhoneNumber]" />
+                        <ui:AnchorBase AnchorPosition="Top" DisplayName="Anchor Base" sap:VirtualizedContainerService.HintSize="384,380" sap2010:WorkflowViewState.IdRef="AnchorBase_1">
+                          <ui:AnchorBase.Action>
+                            <ActivityAction x:TypeArguments="ui:Anchor">
+                              <ActivityAction.Argument>
+                                <DelegateInArgument x:TypeArguments="ui:Anchor" Name="ContextAnchor" />
+                              </ActivityAction.Argument>
+                              <ui:TypeInto DelayBetweenKeys="{x:Null}" Activate="True" AlterIfDisabled="True" ClickBeforeTyping="False" DelayBefore="100" DelayMS="100" DisplayName="Type Into 'INPUT  4VTmp'" EmptyField="False" sap:VirtualizedContainerService.HintSize="334,134" sap2010:WorkflowViewState.IdRef="TypeInto_21" SendWindowMessages="False" SimulateType="False" Text="[FName]">
+                                <ui:TypeInto.Target>
+                                  <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="b126dbb6-c3e8-437c-a975-93921169f80f" InformativeScreenshot="900f337da66b0399c5b0042e86d6a7fa" Selector="&lt;webctrl tag='INPUT' /&gt;" WaitForReady="INTERACTIVE">
+                                    <ui:Target.TimeoutMS>
+                                      <InArgument x:TypeArguments="x:Int32" />
+                                    </ui:Target.TimeoutMS>
+                                  </ui:Target>
+                                </ui:TypeInto.Target>
+                              </ui:TypeInto>
+                            </ActivityAction>
+                          </ui:AnchorBase.Action>
+                          <ui:AnchorBase.AnchorProvider>
+                            <ui:WaitUiElementAppear FoundElement="{x:Null}" WaitActive="{x:Null}" WaitVisible="{x:Null}" DisplayName="Find Element 'LABEL'" sap:VirtualizedContainerService.HintSize="334,106" sap2010:WorkflowViewState.IdRef="WaitUiElementAppear_1">
+                              <ui:WaitUiElementAppear.Target>
+                                <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="25f33864-c90c-46ef-89ab-1c939881b4f4" InformativeScreenshot="4d19aa61c9a042ada4fe6dc5d12848da" Selector="&lt;webctrl aaname='First Name' tag='LABEL' /&gt;">
+                                  <ui:Target.TimeoutMS>
+                                    <InArgument x:TypeArguments="x:Int32" />
+                                  </ui:Target.TimeoutMS>
+                                  <ui:Target.WaitForReady>
+                                    <InArgument x:TypeArguments="ui:WaitForReady" />
+                                  </ui:Target.WaitForReady>
+                                </ui:Target>
+                              </ui:WaitUiElementAppear.Target>
+                            </ui:WaitUiElementAppear>
+                          </ui:AnchorBase.AnchorProvider>
+                        </ui:AnchorBase>
+                        <ui:AnchorBase AnchorPosition="Top" DisplayName="Anchor Base" sap:VirtualizedContainerService.HintSize="384,380" sap2010:WorkflowViewState.IdRef="AnchorBase_2">
+                          <ui:AnchorBase.Action>
+                            <ActivityAction x:TypeArguments="ui:Anchor">
+                              <ActivityAction.Argument>
+                                <DelegateInArgument x:TypeArguments="ui:Anchor" Name="ContextAnchor" />
+                              </ActivityAction.Argument>
+                              <ui:TypeInto DelayBetweenKeys="{x:Null}" Activate="True" AlterIfDisabled="True" ClickBeforeTyping="False" DelayBefore="100" DelayMS="100" DisplayName="Type Into 'INPUT  yVU3u'" EmptyField="False" sap:VirtualizedContainerService.HintSize="334,134" sap2010:WorkflowViewState.IdRef="TypeInto_22" SendWindowMessages="False" SimulateType="False" Text="[LName]">
+                                <ui:TypeInto.Target>
+                                  <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="7773acf8-3ebc-47b3-8e52-4f69972959f2" InformativeScreenshot="68bd0d802d7659bd7384ed73b13de204" Selector="&lt;webctrl tag='INPUT' /&gt;" WaitForReady="INTERACTIVE">
+                                    <ui:Target.TimeoutMS>
+                                      <InArgument x:TypeArguments="x:Int32" />
+                                    </ui:Target.TimeoutMS>
+                                  </ui:Target>
+                                </ui:TypeInto.Target>
+                              </ui:TypeInto>
+                            </ActivityAction>
+                          </ui:AnchorBase.Action>
+                          <ui:AnchorBase.AnchorProvider>
+                            <ui:WaitUiElementAppear FoundElement="{x:Null}" WaitActive="{x:Null}" WaitVisible="{x:Null}" DisplayName="Find Element 'LABEL'" sap:VirtualizedContainerService.HintSize="334,106" sap2010:WorkflowViewState.IdRef="WaitUiElementAppear_2">
+                              <ui:WaitUiElementAppear.Target>
+                                <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="235a73bb-8c1c-49e4-a55c-c0d21a9d4aa8" InformativeScreenshot="9d84cd0cac7bb5b27517d1f378d2e5af" Selector="&lt;webctrl aaname='Last Name' tag='LABEL' /&gt;">
+                                  <ui:Target.TimeoutMS>
+                                    <InArgument x:TypeArguments="x:Int32" />
+                                  </ui:Target.TimeoutMS>
+                                  <ui:Target.WaitForReady>
+                                    <InArgument x:TypeArguments="ui:WaitForReady" />
+                                  </ui:Target.WaitForReady>
+                                </ui:Target>
+                              </ui:WaitUiElementAppear.Target>
+                            </ui:WaitUiElementAppear>
+                          </ui:AnchorBase.AnchorProvider>
+                        </ui:AnchorBase>
+                        <ui:AnchorBase AnchorPosition="Top" DisplayName="Anchor Base" sap:VirtualizedContainerService.HintSize="384,380" sap2010:WorkflowViewState.IdRef="AnchorBase_3">
+                          <ui:AnchorBase.Action>
+                            <ActivityAction x:TypeArguments="ui:Anchor">
+                              <ActivityAction.Argument>
+                                <DelegateInArgument x:TypeArguments="ui:Anchor" Name="ContextAnchor" />
+                              </ActivityAction.Argument>
+                              <ui:TypeInto DelayBetweenKeys="{x:Null}" Activate="True" AlterIfDisabled="True" ClickBeforeTyping="False" DelayBefore="100" DelayMS="100" DisplayName="Type Into 'INPUT  Iq07t'" EmptyField="False" sap:VirtualizedContainerService.HintSize="334,134" sap2010:WorkflowViewState.IdRef="TypeInto_23" SendWindowMessages="False" SimulateType="False" Text="[CompanyName]">
+                                <ui:TypeInto.Target>
+                                  <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="4594ead3-dba5-445c-bee7-8e22885e810e" InformativeScreenshot="73e145f8130793f054a8689a4c9ee08a" Selector="&lt;webctrl tag='INPUT' /&gt;" WaitForReady="INTERACTIVE">
+                                    <ui:Target.TimeoutMS>
+                                      <InArgument x:TypeArguments="x:Int32" />
+                                    </ui:Target.TimeoutMS>
+                                  </ui:Target>
+                                </ui:TypeInto.Target>
+                              </ui:TypeInto>
+                            </ActivityAction>
+                          </ui:AnchorBase.Action>
+                          <ui:AnchorBase.AnchorProvider>
+                            <ui:WaitUiElementAppear FoundElement="{x:Null}" WaitActive="{x:Null}" WaitVisible="{x:Null}" DisplayName="Find Element 'LABEL'" sap:VirtualizedContainerService.HintSize="334,106" sap2010:WorkflowViewState.IdRef="WaitUiElementAppear_3">
+                              <ui:WaitUiElementAppear.Target>
+                                <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="14555c92-2bc4-467a-927e-40fb03099b7c" InformativeScreenshot="b25ade04dede9bc53ae298a2a69a0a3c" Selector="&lt;webctrl aaname='Company Name' tag='LABEL' /&gt;">
+                                  <ui:Target.TimeoutMS>
+                                    <InArgument x:TypeArguments="x:Int32" />
+                                  </ui:Target.TimeoutMS>
+                                  <ui:Target.WaitForReady>
+                                    <InArgument x:TypeArguments="ui:WaitForReady" />
+                                  </ui:Target.WaitForReady>
+                                </ui:Target>
+                              </ui:WaitUiElementAppear.Target>
+                            </ui:WaitUiElementAppear>
+                          </ui:AnchorBase.AnchorProvider>
+                        </ui:AnchorBase>
+                        <ui:AnchorBase AnchorPosition="Top" DisplayName="Anchor Base" sap:VirtualizedContainerService.HintSize="384,380" sap2010:WorkflowViewState.IdRef="AnchorBase_4">
+                          <ui:AnchorBase.Action>
+                            <ActivityAction x:TypeArguments="ui:Anchor">
+                              <ActivityAction.Argument>
+                                <DelegateInArgument x:TypeArguments="ui:Anchor" Name="ContextAnchor" />
+                              </ActivityAction.Argument>
+                              <ui:TypeInto DelayBetweenKeys="{x:Null}" Activate="True" AlterIfDisabled="True" ClickBeforeTyping="False" DelayBefore="100" DelayMS="100" DisplayName="Type Into 'INPUT  76Juc'" EmptyField="False" sap:VirtualizedContainerService.HintSize="334,134" sap2010:WorkflowViewState.IdRef="TypeInto_24" SendWindowMessages="False" SimulateType="False" Text="[PhoneNumber]">
+                                <ui:TypeInto.Target>
+                                  <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="6f541569-e59d-4e00-ae4d-bfa5f3846bc7" InformativeScreenshot="d442f2f07e1e3d9c00cdeb9c8817da6c" Selector="&lt;webctrl tag='INPUT' /&gt;" WaitForReady="INTERACTIVE">
+                                    <ui:Target.TimeoutMS>
+                                      <InArgument x:TypeArguments="x:Int32" />
+                                    </ui:Target.TimeoutMS>
+                                  </ui:Target>
+                                </ui:TypeInto.Target>
+                              </ui:TypeInto>
+                            </ActivityAction>
+                          </ui:AnchorBase.Action>
+                          <ui:AnchorBase.AnchorProvider>
+                            <ui:WaitUiElementAppear FoundElement="{x:Null}" WaitActive="{x:Null}" WaitVisible="{x:Null}" DisplayName="Find Element 'LABEL'" sap:VirtualizedContainerService.HintSize="334,106" sap2010:WorkflowViewState.IdRef="WaitUiElementAppear_4">
+                              <ui:WaitUiElementAppear.Target>
+                                <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="03b54986-3bbb-4ed0-9e9f-7fbcb83d3332" InformativeScreenshot="21e413746da89c8db613009985b110ba" Selector="&lt;webctrl aaname='Phone Number' tag='LABEL' /&gt;">
+                                  <ui:Target.TimeoutMS>
+                                    <InArgument x:TypeArguments="x:Int32" />
+                                  </ui:Target.TimeoutMS>
+                                  <ui:Target.WaitForReady>
+                                    <InArgument x:TypeArguments="ui:WaitForReady" />
+                                  </ui:Target.WaitForReady>
+                                </ui:Target>
+                              </ui:WaitUiElementAppear.Target>
+                            </ui:WaitUiElementAppear>
+                          </ui:AnchorBase.AnchorProvider>
+                        </ui:AnchorBase>
+                        <ui:Click DelayBefore="{x:Null}" DelayMS="{x:Null}" AlterIfDisabled="True" ClickType="CLICK_SINGLE" DisplayName="Click 'INPUT'" sap:VirtualizedContainerService.HintSize="384,106" sap2010:WorkflowViewState.IdRef="Click_6" KeyModifiers="None" MouseButton="BTN_LEFT" SendWindowMessages="False" SimulateClick="False">
+                          <ui:Click.CursorPosition>
+                            <ui:CursorPosition Position="Center">
+                              <ui:CursorPosition.OffsetX>
+                                <InArgument x:TypeArguments="x:Int32" />
+                              </ui:CursorPosition.OffsetX>
+                              <ui:CursorPosition.OffsetY>
+                                <InArgument x:TypeArguments="x:Int32" />
+                              </ui:CursorPosition.OffsetY>
+                            </ui:CursorPosition>
+                          </ui:Click.CursorPosition>
+                          <ui:Click.Target>
+                            <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="e2fd860d-9d0a-4c55-98dd-f45616bcb143" InformativeScreenshot="961ec3160d6d3aa8f579ae6bceb0264a" Selector="&lt;webctrl tag='INPUT' type='submit' /&gt;" WaitForReady="INTERACTIVE">
                               <ui:Target.TimeoutMS>
                                 <InArgument x:TypeArguments="x:Int32" />
                               </ui:Target.TimeoutMS>
                             </ui:Target>
-                          </ui:TypeInto.Target>
-                        </ui:TypeInto>
-                      </ActivityAction>
-                    </ui:AnchorBase.Action>
-                    <ui:AnchorBase.AnchorProvider>
-                      <ui:WaitUiElementAppear FoundElement="{x:Null}" WaitActive="{x:Null}" WaitVisible="{x:Null}" DisplayName="Find Element 'LABEL'" sap:VirtualizedContainerService.HintSize="334,106" sap2010:WorkflowViewState.IdRef="WaitUiElementAppear_4">
-                        <ui:WaitUiElementAppear.Target>
-                          <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="03b54986-3bbb-4ed0-9e9f-7fbcb83d3332" InformativeScreenshot="21e413746da89c8db613009985b110ba" Selector="&lt;webctrl aaname='Phone Number' tag='LABEL' /&gt;">
-                            <ui:Target.TimeoutMS>
-                              <InArgument x:TypeArguments="x:Int32" />
-                            </ui:Target.TimeoutMS>
-                            <ui:Target.WaitForReady>
-                              <InArgument x:TypeArguments="ui:WaitForReady" />
-                            </ui:Target.WaitForReady>
-                          </ui:Target>
-                        </ui:WaitUiElementAppear.Target>
-                      </ui:WaitUiElementAppear>
-                    </ui:AnchorBase.AnchorProvider>
-                  </ui:AnchorBase>
-                  <ui:Click DelayBefore="{x:Null}" DelayMS="{x:Null}" AlterIfDisabled="True" ClickType="CLICK_SINGLE" DisplayName="Click 'INPUT'" sap:VirtualizedContainerService.HintSize="384,106" sap2010:WorkflowViewState.IdRef="Click_6" KeyModifiers="None" MouseButton="BTN_LEFT" SendWindowMessages="False" SimulateClick="False">
-                    <ui:Click.CursorPosition>
-                      <ui:CursorPosition Position="Center">
-                        <ui:CursorPosition.OffsetX>
-                          <InArgument x:TypeArguments="x:Int32" />
-                        </ui:CursorPosition.OffsetX>
-                        <ui:CursorPosition.OffsetY>
-                          <InArgument x:TypeArguments="x:Int32" />
-                        </ui:CursorPosition.OffsetY>
-                      </ui:CursorPosition>
-                    </ui:Click.CursorPosition>
-                    <ui:Click.Target>
-                      <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="e2fd860d-9d0a-4c55-98dd-f45616bcb143" InformativeScreenshot="961ec3160d6d3aa8f579ae6bceb0264a" Selector="&lt;webctrl tag='INPUT' type='submit' /&gt;" WaitForReady="INTERACTIVE">
-                        <ui:Target.TimeoutMS>
-                          <InArgument x:TypeArguments="x:Int32" />
-                        </ui:Target.TimeoutMS>
-                      </ui:Target>
-                    </ui:Click.Target>
-                  </ui:Click>
-                  <Assign DisplayName="Assign" sap:VirtualizedContainerService.HintSize="384,60" sap2010:WorkflowViewState.IdRef="Assign_7">
-                    <Assign.To>
-                      <OutArgument x:TypeArguments="x:Int32">[IterationCounter]</OutArgument>
-                    </Assign.To>
-                    <Assign.Value>
-                      <InArgument x:TypeArguments="x:Int32">[IterationCounter + 1]</InArgument>
-                    </Assign.Value>
-                  </Assign>
-                </Sequence>
-              </While>
-            </Sequence>
-          </ActivityAction>
-        </ui:OpenBrowser.Body>
-      </ui:OpenBrowser>
-    </Sequence>
+                          </ui:Click.Target>
+                        </ui:Click>
+                        <Assign DisplayName="Assign" sap:VirtualizedContainerService.HintSize="384,60" sap2010:WorkflowViewState.IdRef="Assign_7">
+                          <Assign.To>
+                            <OutArgument x:TypeArguments="x:Int32">[IterationCounter]</OutArgument>
+                          </Assign.To>
+                          <Assign.Value>
+                            <InArgument x:TypeArguments="x:Int32">[IterationCounter + 1]</InArgument>
+                          </Assign.Value>
+                        </Assign>
+                      </Sequence>
+                    </While>
+                  </Sequence>
+                </ActivityAction>
+              </ui:OpenBrowser.Body>
+              <sap:WorkflowViewStateService.ViewState>
+                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                  <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                  <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                </scg:Dictionary>
+              </sap:WorkflowViewStateService.ViewState>
+            </ui:OpenBrowser>
+          </Sequence>
+        </Sequence>
+      </ui:CommentOut.Body>
+    </ui:CommentOut>
+    <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="436,91" sap2010:WorkflowViewState.IdRef="LogMessage_6" Level="Info" Message="[&quot;End Time:- &quot; + date.Now.ToString]" />
   </Sequence>
 </Activity>
