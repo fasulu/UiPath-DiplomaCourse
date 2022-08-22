@@ -1,6 +1,6 @@
 {
   "name": "TryCatchDemo",
-  "description": "Blank Process",
+  "description": "TryCatch activity catches a specified exception type in a sequence or activity, and either displays an error notification or dismisses it and continues the execution. As a mechanism, TryCatch runs the activities in the Try block and, if an error takes place, executes the activities in the Catches block. The Finally block is only executed when no exceptions are thrown or when an exception is caught and handled in the Catches block (without being re-thrown). ",
   "main": "Main.xaml",
   "dependencies": {
     "UiPath.Excel.Activities": "[2.9.5]",
