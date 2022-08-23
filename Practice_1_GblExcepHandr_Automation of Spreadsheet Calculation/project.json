@@ -1,0 +1,58 @@
+{
+  "name": "Practice_1_GblExcepHandr_Automation of Spreadsheet Calculation",
+  "description": "Create a workflow that takes as input the excel file attached below and adds the difference between Cash In value and Cash Out value for each row on the Difference column. If the calculation of the difference between the two is successful, set the Status to Success, otherwise set it to either Cash In wrong or Cash Out wrong.\r\n\r\nUse Try Catch blocks to catch exceptions when trying to convert Cash In and Cash Out values.",
+  "main": "Main.xaml",
+  "dependencies": {
+    "UiPath.Excel.Activities": "[2.12.3]",
+    "UiPath.Mail.Activities": "[1.15.2]",
+    "UiPath.System.Activities": "[22.4.1]",
+    "UiPath.UIAutomation.Activities": "[22.4.5]"
+  },
+  "webServices": [],
+  "entitiesStores": [],
+  "schemaVersion": "4.0",
+  "studioVersion": "22.4.3.0",
+  "projectVersion": "1.0.0",
+  "runtimeOptions": {
+    "autoDispose": false,
+    "netFrameworkLazyLoading": false,
+    "isPausable": true,
+    "isAttended": false,
+    "requiresUserInteraction": true,
+    "supportsPersistence": false,
+    "excludedLoggedData": [
+      "Private:*",
+      "*password*"
+    ],
+    "executionType": "Workflow",
+    "readyForPiP": false,
+    "startsInPiP": false,
+    "mustRestoreAllDependencies": true
+  },
+  "designOptions": {
+    "projectProfile": "Developement",
+    "outputType": "Process",
+    "libraryOptions": {
+      "includeOriginalXaml": false,
+      "privateWorkflows": []
+    },
+    "processOptions": {
+      "ignoredFiles": []
+    },
+    "fileInfoCollection": [],
+    "modernBehavior": true
+  },
+  "expressionLanguage": "VisualBasic",
+  "entryPoints": [
+    {
+      "filePath": "Main.xaml",
+      "uniqueId": "99c1b042-7bd6-4bda-aed9-2ffe96586129",
+      "input": [],
+      "output": []
+    }
+  ],
+  "isTemplate": false,
+  "templateProjectData": {},
+  "publishData": {},
+  "targetFramework": "Legacy"
+}
