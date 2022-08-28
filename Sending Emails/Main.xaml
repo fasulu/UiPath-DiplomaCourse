@@ -1,4 +1,4 @@
-<Activity mc:Ignorable="sap sap2010" x:Class="Main" mva:VisualBasic.Settings="{x:Null}" sap:VirtualizedContainerService.HintSize="1216,868" sap2010:WorkflowViewState.IdRef="ActivityBuilder_1" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+<Activity mc:Ignorable="sap sap2010" x:Class="Main" mva:VisualBasic.Settings="{x:Null}" sap:VirtualizedContainerService.HintSize="466,778" sap2010:WorkflowViewState.IdRef="ActivityBuilder_1" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="27">
       <x:String>System.Activities</x:String>
@@ -53,7 +53,7 @@
       <AssemblyReference>UiPath.Mail.Activities.Design</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="Mail Message Sequence" sap:VirtualizedContainerService.HintSize="425.6,601.6" sap2010:WorkflowViewState.IdRef="Sequence_2">
+  <Sequence sap2010:Annotation.AnnotationText="&#xD;&#xA;Video demo - Sending emails&#xD;&#xA;&#xD;&#xA;Learn to send emails in UiPath Studio using the 'Send SMTP Mail Message' activity.&#xD;&#xA;" DisplayName="Mail Message Sequence" sap:VirtualizedContainerService.HintSize="426,698" sap2010:WorkflowViewState.IdRef="Sequence_2">
     <Sequence.Variables>
       <Variable x:TypeArguments="x:String" Name="Password" />
       <Variable x:TypeArguments="x:String" Name="Email" />
@@ -63,10 +63,11 @@
     <sap:WorkflowViewStateService.ViewState>
       <scg:Dictionary x:TypeArguments="x:String, x:Object">
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+        <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <ui:ReadTextFile Content="[EmailTemplate]" DisplayName="Read Email Template" FileName="Data\EmailTemplate.txt" sap:VirtualizedContainerService.HintSize="384,80.8" sap2010:WorkflowViewState.IdRef="ReadTextFile_1" />
-    <ui:TakeScreenshot WaitBefore="{x:Null}" DisplayName="Take A Screenshot" sap:VirtualizedContainerService.HintSize="384,68.8" sap2010:WorkflowViewState.IdRef="TakeScreenshot_1" Screenshot="[Screenshot]">
+    <ui:ReadTextFile Content="[EmailTemplate]" DisplayName="Read Email Template" FileName="Data\EmailTemplate.txt" sap:VirtualizedContainerService.HintSize="384,79" sap2010:WorkflowViewState.IdRef="ReadTextFile_1" />
+    <ui:TakeScreenshot WaitBefore="{x:Null}" DisplayName="Take A Screenshot" sap:VirtualizedContainerService.HintSize="384,68" sap2010:WorkflowViewState.IdRef="TakeScreenshot_1" Screenshot="[Screenshot]">
       <ui:TakeScreenshot.Target>
         <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Selector="{x:Null}" Id="b3743044-f6c8-4ffb-97a0-c50c9e48004d">
           <ui:Target.TimeoutMS>
@@ -78,13 +79,11 @@
         </ui:Target>
       </ui:TakeScreenshot.Target>
     </ui:TakeScreenshot>
-    <ui:SaveImage DisplayName="Save Image Locally" FileName="Data\Screenshot.png" sap:VirtualizedContainerService.HintSize="384,92.8" sap2010:WorkflowViewState.IdRef="SaveImage_1" Image="[Screenshot]" />
-    <ui:SendMail Bcc="{x:Null}" Cc="{x:Null}" From="{x:Null}" MailMessage="{x:Null}" SecurePassword="{x:Null}" TimeoutMS="{x:Null}" Body="[String.Format(EmailTemplate, Now.ToString)]" DisplayName="Send SMTP Mail" Email="[Email]" EnableSSL="True" sap:VirtualizedContainerService.HintSize="384,146.4" sap2010:WorkflowViewState.IdRef="SendMail_2" IsBodyHtml="False" Name="Robot Robotescu" Password="[Password]" Port="587" SecureConnection="Auto" Server="smtp.gmail.com" Subject="Automation Report" To="Email to be completed">
+    <ui:SaveImage DisplayName="Save Image Locally" FileName="Data\Screenshot.png" sap:VirtualizedContainerService.HintSize="384,92" sap2010:WorkflowViewState.IdRef="SaveImage_1" Image="[Screenshot]" />
+    <ui:SendMail Bcc="{x:Null}" Cc="{x:Null}" From="{x:Null}" MailMessage="{x:Null}" SecurePassword="{x:Null}" TimeoutMS="{x:Null}" Body="[String.Format(EmailTemplate, Now.ToString)]" DisplayName="Send SMTP Mail" Email="[Email]" EnableSSL="True" sap:VirtualizedContainerService.HintSize="384,145" sap2010:WorkflowViewState.IdRef="SendMail_2" IsBodyHtml="False" Name="Robot Robotescu" Password="[Password]" Port="587" SecureConnection="Auto" Server="smtp.gmail.com" Subject="Automation Report" To="Email to be completed">
       <ui:SendMail.Files>
         <scg:List x:TypeArguments="InArgument(x:String)" Capacity="4">
-          <InArgument x:TypeArguments="x:String">
-            <Literal x:TypeArguments="x:String">Data\Screenshot.png</Literal>
-          </InArgument>
+          <InArgument x:TypeArguments="x:String">Data\Screenshot.png</InArgument>
         </scg:List>
       </ui:SendMail.Files>
     </ui:SendMail>
