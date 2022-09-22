@@ -199,6 +199,17 @@
         "C:\\Users\\fasulu\\.nuget\\packages\\uipath.vision\\3.3.0\\lib/net461/UiPath.Vision.dll"
       ],
       "Path": "C:\\Users\\fasulu\\.nuget\\packages\\uipath.uiautomation.activities\\22.4.5"
+    },
+    {
+      "Package": {
+        "Id": "Microsoft.Activities.Extensions",
+        "Version": "2.0.6.9"
+      },
+      "Assemblies": [
+        "C:\\Users\\fasulu\\.nuget\\packages\\microsoft.activities.extensions\\2.0.6.9\\lib/Net45/Microsoft.Activities.Extensions.Design.dll",
+        "C:\\Users\\fasulu\\.nuget\\packages\\microsoft.activities.extensions\\2.0.6.9\\lib/Net45/Microsoft.Activities.Extensions.dll"
+      ],
+      "Path": "C:\\Users\\fasulu\\.nuget\\packages\\microsoft.activities.extensions\\2.0.6.9"
     }
   ],
   "Conflicts": [],
@@ -322,6 +333,11 @@
           "Item2": "[3.1.1, )"
         }
       ]
+    },
+    "Microsoft.Activities.Extensions": {
+      "Id": "Microsoft.Activities.Extensions",
+      "Version": "2.0.6.9",
+      "Dependencies": []
     },
     "Microsoft.AspNet.SignalR.Client": {
       "Id": "Microsoft.AspNet.SignalR.Client",
@@ -1606,6 +1622,17 @@
         "C:\\Users\\fasulu\\.nuget\\packages\\mailkit\\3.1.1\\lib\\net46\\MailKit.dll"
       ],
       "Path": "C:\\Users\\fasulu\\.nuget\\packages\\mailkit\\3.1.1"
+    },
+    {
+      "Package": {
+        "Id": "Microsoft.Activities.Extensions",
+        "Version": "2.0.6.9"
+      },
+      "Assemblies": [
+        "C:\\Users\\fasulu\\.nuget\\packages\\microsoft.activities.extensions\\2.0.6.9\\lib\\Net45\\Microsoft.Activities.Extensions.Design.dll",
+        "C:\\Users\\fasulu\\.nuget\\packages\\microsoft.activities.extensions\\2.0.6.9\\lib\\Net45\\Microsoft.Activities.Extensions.dll"
+      ],
+      "Path": "C:\\Users\\fasulu\\.nuget\\packages\\microsoft.activities.extensions\\2.0.6.9"
     },
     {
       "Package": {

@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "TG3gKVwNpsu5T14ArdtQj8MRIto+mr3wvoxKRTqOZcjNSF8vYO193ZjJy8CXn7bv1BjCnZEmQUVEcOO/RlsBOA==",
+  "dgSpecHash": "x4oFDedMZ8xSYH0sbvBoPYoHYZNOP+YR6YmH2kJzhWeTzqZuzB9zF4z+AHhY/aYoB9SWOOD1tflLb+tBlb6xNw==",
   "success": true,
   "projectFilePath": "C:\\Users\\fasulu\\Documents\\UiPath\\UiPath-DiplomaCourse\\Dictionaries\\.local\\",
   "expectedPackageFiles": [
@@ -15,6 +15,7 @@
     "C:\\Users\\fasulu\\.nuget\\packages\\google.apis.peopleservice.v1\\1.55.0.2567\\google.apis.peopleservice.v1.1.55.0.2567.nupkg.sha512",
     "C:\\Users\\fasulu\\.nuget\\packages\\htmlagilitypack\\1.11.38\\htmlagilitypack.1.11.38.nupkg.sha512",
     "C:\\Users\\fasulu\\.nuget\\packages\\mailkit\\3.1.1\\mailkit.3.1.1.nupkg.sha512",
+    "C:\\Users\\fasulu\\.nuget\\packages\\microsoft.activities.extensions\\2.0.6.9\\microsoft.activities.extensions.2.0.6.9.nupkg.sha512",
     "C:\\Users\\fasulu\\.nuget\\packages\\microsoft.aspnet.signalr.client\\2.4.0\\microsoft.aspnet.signalr.client.2.4.0.nupkg.sha512",
     "C:\\Users\\fasulu\\.nuget\\packages\\microsoft.aspnetcore.connections.abstractions\\3.1.6\\microsoft.aspnetcore.connections.abstractions.3.1.6.nupkg.sha512",
     "C:\\Users\\fasulu\\.nuget\\packages\\microsoft.aspnetcore.http.connections.client\\3.1.6\\microsoft.aspnetcore.http.connections.client.3.1.6.nupkg.sha512",

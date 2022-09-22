@@ -1,8 +1,9 @@
 {
   "name": "Dictionaries_Collection",
   "description": "Dictionaries <TK, TV> Collection",
-  "main": "Main.xaml",
+  "main": "Practice-Dictionary.xaml",
   "dependencies": {
+    "Microsoft.Activities.Extensions": "[2.0.6.9]",
     "UiPath.Excel.Activities": "[2.12.3]",
     "UiPath.Mail.Activities": "[1.15.2]",
     "UiPath.System.Activities": "[22.4.1]",
@@ -14,6 +15,7 @@
   "studioVersion": "22.4.3.0",
   "projectVersion": "1.0.0",
   "runtimeOptions": {
+    "exceptionHandlerWorkflow": "GlobalHandler.xaml",
     "autoDispose": false,
     "netFrameworkLazyLoading": false,
     "isPausable": true,
@@ -47,6 +49,18 @@
     {
       "filePath": "Main.xaml",
       "uniqueId": "c1d8447f-0687-4da2-a61f-fa39ad0932d3",
+      "input": [],
+      "output": []
+    },
+    {
+      "filePath": "Dictionary-BasicExamples.xaml",
+      "uniqueId": "34ccedbc-2071-4837-8797-b3b3a933901c",
+      "input": [],
+      "output": []
+    },
+    {
+      "filePath": "Practice-Dictionary.xaml",
+      "uniqueId": "b84f89e2-3033-451f-8182-99cf8ef27c89",
       "input": [],
       "output": []
     }
